@@ -1,0 +1,6 @@
+<div class="container">
+	<p>Page Content goes here</p>
+	<p>{{ welcome}}</p>
+	<button class="btn btn-primary" v-on:click="welcome = 'General Kenobi'">Bootstrap Button</button>
+	<button  @click="$router.push({name: 'gamelist'})" class="btn btn-secondary">GameList Page</button>
+</div>

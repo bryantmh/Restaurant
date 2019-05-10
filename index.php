@@ -10,18 +10,31 @@
 	<body>
 
 		<div id="app">
-			<p>Page Content goes here</p>
-			<p>{{ welcome}}</p>
-			<button class="btn btn-primary" v-on:click="welcome = 'General Kenobi'">Bootstrap Button</button>
+			<router-view></router-view>
 		</div>
 
+		<!-- Other scripts -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- Our custom views -->
+		<script>
+			var loginHTML = <?php echo json_encode(file_get_contents("./View/login.html"));?>;
+			var gameHTML = <?php echo json_encode(file_get_contents("./View/game.html"));?>;
+			var gamelistHTML = <?php echo json_encode(file_get_contents("./View/gamelist.html"));?>;
+		</script>
 
+		<!-- Vue Packages -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+		<!-- Our custom presenters and model -->
+		<script src="./Model/clientmodel.js"></script>
+		<script src="./Presenter/game.js"></script>
+		<script src="./Presenter/gamelist.js"></script>
+		<script src="./Presenter/login.js"></script>
 		<script src="./index.js"></script>
 	</body>
 </html>
