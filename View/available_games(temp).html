@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Available Games</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        <style>
+                @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+                .page-box {
+                        max-width: 660px;
+                        padding: 8% 0 0;
+                        margin: auto;
+                }
+
+                .content {
+                        position: relative;
+                        z-index: 1;
+                        background: #FFFFFF;
+                        max-width: 700px;
+                        margin: 40% auto 100px;
+                        padding: 60px;
+                        padding-top: 30px;
+                        text-align: center;
+                        border-radius: 15px 15px 15px 15px;
+                        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                }
+
+                .content input {
+                        font-family: "Roboto", sans-serif;
+                        outline: 0;
+                        background: #f2f2f2;
+                        width: 100%;
+                        border: 0;
+                        margin: 0 0 15px;
+                        padding: 15px;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                }
+
+                .content .message {
+                        margin: 15px 0 0;
+                        color: #b3b3b3;
+                        font-size: 12px;
+                }
+
+                .content .register-content {
+                        display: none;
+                }
+
+                body {
+                        background-image: url("https://grandgamersguild.com/wp-content/uploads/2018/01/ticket-to-ride-cover.jpg");
+                        background-size: cover;
+                        font-family: "Roboto", sans-serif;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                }
+
+                h1 {
+                        text-align: center;
+                        font-family: Georgia, 'Times New Roman', Times, serif;
+                        color: rgba(15, 15, 15, 0.76);
+                        text-shadow: 2px 2px 8px rgba(29, 29, 29, 0.288);
+                }
+
+                #column {
+                        width: 45%;
+                        margin: 4px;
+                        font-weight: bold;
+                }
+        </style>
+</head>
+
+<body>
+        <div class="page-box">
+                <div class="content">
+                        <h1>Select a Game</h1>
+                        <div id="app"></div>
+                        <script src="https://unpkg.com/vue"></script>
+                        <button type="button" class="btn btn-primary btn-lg">Create New Game</button>
+                </div>
+        </div>
+</body>
+
+<script>
+        Vue.component('game-component', {
+                props: ['game'],
+                filters: {
+                        displayNumberOfPlayers(game) {
+                                return `${game.numberOfPlayers}/5`;
+                        }
+                },
+                methods: {
+                        incrementPlayers(game) {
+                                game.numberOfPlayers++;
+                        },
+                        // TODO: joinGame
+                },
+                template: `
+        <div>
+                <table style="box-shadow: 5px 10px 8px 5px #888888; height: 100px; 
+                border-color: black; background-color: #f7db3d; width: 500px; border-radius: 20px; margin:20px;"
+                cellpadding="20px" >
+                <tbody>
+                <tr>
+                <td style="width: 356px;text-align: left;">
+                <h2><span style="font-weight:bold;">{{game.userId}}</span></h2>
+                </td>
+                <td style="width: 10px; text-align: center;">
+                <h3><span>{{game | displayNumberOfPlayers}}</span></h3>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
+   `
+        });
+
+        //        <button v-on:click="incrementPlayers(game)">+</button> // use function for incrementing player number
+
+
+
+        const app = new Vue({
+                el: "#app",
+                data: {
+                        games: [
+                                {
+                                        userId: "Username",
+                                        numberOfPlayers: "3",
+                                },
+                                {
+                                        userId: "Tacos4Life",
+                                        numberOfPlayers: "2",
+                                },
+                                {
+                                        userId: "TheWinner13",
+                                        numberOfPlayers: "4",
+                                },
+                                {
+                                        userId: "TheLoser145",
+                                        numberOfPlayers: "2",
+                                }
+                        ],
+                },
+                template: `
+        <div>
+            <game-component v-for="game in games" v-bind:game="game"/>
+        </div> 
+    `
+
+        })
+</script>
+
+</html>
