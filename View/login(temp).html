@@ -1,0 +1,89 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    .login-page {
+      max-width: 660px;
+      padding: 8% 0 0;
+      margin: auto;
+    }
+
+    .form {
+      position: relative;
+      z-index: 1;
+      background: #FFFFFF;
+      max-width: 500px;
+      margin: 40% auto 100px;
+      padding: 60px;
+      padding-top: 30px;
+      text-align: center;
+      border-radius: 15px 15px 15px 15px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    .form input {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    .form .message {
+      margin: 15px 0 0;
+      color: #b3b3b3;
+      font-size: 12px;
+    }
+
+    .form .register-form {
+      display: none;
+    }
+
+    body {
+      background-image: url("https://grandgamersguild.com/wp-content/uploads/2018/01/ticket-to-ride-cover.jpg");
+      background-size: cover;
+      font-family: "Roboto", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: rgba(15, 15, 15, 0.76);
+      text-shadow: 2px 2px 8px rgba(29, 29, 29, 0.288);
+    }
+
+    #column {
+      width: 45%;
+      margin: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form" action="">
+        <div class="form-group">
+          <h1>Login or Register</h1>
+          <input type="text" class="form-control" placeholder="username" id="username" />
+          <input type="password" class="form-control" placeholder="password" id="password" />
+          <button type="button" class="btn btn-primary" id="column">login</button>
+          <button type="button" class="btn btn-primary" id="column">register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
