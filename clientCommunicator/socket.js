@@ -1,8 +1,8 @@
 const serverProxy = () => import('./serverProxy');
-const clientFacade = () => import('./clientFacade');
+const ICommand = () => import('./ICommand');
 const socket = Vue.component('socket', {
     components:{
-        clientFacade,
+        ICommand,
         serverProxy,
     },
     data() { return{
@@ -31,7 +31,7 @@ const socket = Vue.component('socket', {
             commandOut.command = this.command
             commandOut.clientId = this.clientId
             commandOut.params = this.params
-            clientFacade.execute(this.command, this.params)
+            ICommand.execute(this.command, this.params)
             this.socket.send(serverProxy.createCommandMessage(this.command, this.params));
         }
     }
