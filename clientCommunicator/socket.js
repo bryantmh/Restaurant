@@ -8,11 +8,9 @@ const socket = Vue.component('socket', {
     data() { return{
             socket: null,
             clientId: null,
-            dataFromServer: null,
-            clientIdList: null,
-            recipientId: null,
             command: null,
             params: null,
+            gameId: null,
         }
     },
     methods: {
@@ -22,17 +20,19 @@ const socket = Vue.component('socket', {
                 var command = JSON.parse(event.data)
                 this.command = messageIn.command
                 this.clientId = messageIn.YourClientId
-                this.clientIdList = messageIn.clientIdList
-                this.dataFromServer = messageIn.params
+                this.gameId = messageIn.gameId
+                this.gameId = messageIn.gameId
+                this.params = messageIn.params
             }
         },
         commandHandler: function(){
             var commandOut = {}
             commandOut.command = this.command
-            commandOut.clientId = this.clientId
             commandOut.params = this.params
+            commandOut.clientId = this.clientId
+            commandOut.gameId = this.gameId
             ICommand.execute(this.command, this.params)
-            this.socket.send(serverProxy.createCommandMessage(this.command, this.params));
+            this.socket.send(commandOut);
         }
     }
   });

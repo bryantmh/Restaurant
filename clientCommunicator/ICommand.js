@@ -2,26 +2,30 @@ function execute(command, params){
     eval(command)(params);
 }
 
-var startGame = function (paramArray){
+var startGame = function (params){
     return "start game";
 }
 
-var getGameList = function(paramArray){
+var getGameList = function(params){
     return "game list";
 }
 
-var joinGame = function(paramArray){
+var joinGame = function(params){
     return "join game";
 }
 
-var createGame = function(paramArray){
+var createGame = function(params){
     return "createGame";
 }
 
-var login = function(paramArray){
+var playerjoined = function(params){
+    return "player joined"
+}
+
+var login = function(params){
     return "login";
 }
 
-var register = function(paramArray){
+var register = function(params){
     return "register";
 }
