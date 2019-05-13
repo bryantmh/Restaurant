@@ -7,4 +7,9 @@ const game = Vue.component('game', {
   data() {
     return data
   },
+  methods: {
+    addUser(user) {
+        this.users.push(user);
+    }
+},
 });

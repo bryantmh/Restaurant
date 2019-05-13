@@ -9,7 +9,7 @@
 	</head>
 	<body>
 
-		<div id="app">
+		<div id="app" class="containing-element">
 			<router-view></router-view>
 		</div>
 
@@ -29,6 +29,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.1.0/vuex.js"></script>
 
 		<!-- Our custom presenters and model -->
 		<script src="./Model/clientmodel.js"></script>
