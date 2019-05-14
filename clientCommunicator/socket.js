@@ -9,29 +9,28 @@ const socket = Vue.component('socket', {
             socket: null,
             clientId: null,
             command: null,
-            params: null,
+            object: null,
             gameId: null,
         }
     },
     methods: {
         connect: function(){
             this.socket = new WebSocket("");
-            this.socket.oncommand = (event) => {
+            this.socket.onmessage = (event) => {
                 var command = JSON.parse(event.data)
                 this.command = messageIn.command
                 this.clientId = messageIn.YourClientId
                 this.gameId = messageIn.gameId
-                this.gameId = messageIn.gameId
-                this.params = messageIn.params
+                this.object = messageIn.object
+                ICommand.execute(this.command, this.object)
             }
         },
         commandHandler: function(){
             var commandOut = {}
             commandOut.command = this.command
-            commandOut.params = this.params
+            commandOut.object = this.object
             commandOut.clientId = this.clientId
             commandOut.gameId = this.gameId
-            ICommand.execute(this.command, this.params)
             this.socket.send(commandOut);
         }
     }
