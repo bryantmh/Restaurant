@@ -7,4 +7,16 @@ const gamelist = Vue.component('gamelist', {
   data() {
     return data
   },
+
+  methods: {
+  	incrementPlayers(game) {
+            this.game.numberOfPlayers++;
+    },
+    createGame() {
+
+    },
+    joinGame() {
+    	
+    }
+  },
 });

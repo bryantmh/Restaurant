@@ -1,6 +1,17 @@
-<div class="container">
-	<p>Page Content goes here</p>
-	<p>{{ welcome}}</p>
-	<button class="btn btn-primary" v-on:click="welcome = 'General Kenobi'">Bootstrap Button</button>
-	<button  @click="$router.push({name: 'gamelist'})" class="btn btn-secondary">GameList Page</button>
+<div class="page-content" role="main">
+	<div id="content">
+		<form class="login-form" action="">
+			<div class="form-group">
+				<h1>Login or Register</h1>
+				<input type="text" class="form-control" placeholder="username" id="username">
+				<input type="password" class="form-control" placeholder="password" id="password">
+				<button type="button" class="btn btn-primary column">Login</button>
+				<button type="button" class="btn btn-primary column">Register</button>
+				{{ $store.state.enteredUsername }}.
+				{{ enteredUsername }}
+				{{ enteredPassword }}
+			    <button @click="setEnteredUsername('Stuff')">+</button>
+			</div>
+		</form>
+	</div>
 </div>

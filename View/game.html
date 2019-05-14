@@ -1,2 +1,9 @@
-<div class="container">
+<div class="page-content" role="main">
+	<div id="content">
+  		<h1>Waiting for game to start...</h1>
+  		<div v-for="client in game.clients">
+  			<h3>{{client}}</h3>
+  		</div>
+  		<button type="button" class="btn btn-primary btn-lg">Start Game</button>
+  	</div>
 </div>

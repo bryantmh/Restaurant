@@ -5,6 +5,7 @@ const router = new VueRouter({
   routes: [
   { path: '/', component: login, name: 'login'},
   { path: '/gamelist', component: gamelist, name: 'gamelist'},
+  { path: '/game', component: game, name: 'game'},
   ]
 });
 
@@ -16,9 +17,8 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,
+    store,
     watch: {},
-    data() {
-        return data
-    },
     methods: {},
+    computed: {},
 });
