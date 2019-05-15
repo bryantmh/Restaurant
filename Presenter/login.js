@@ -36,8 +36,6 @@ const login = Vue.component('login', {
     authToken: function() {
       this.$router.push({name: 'gamelist'});
     }
-    // todo watches on data from login and register
-  
   },
 
 });

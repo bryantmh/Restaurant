@@ -26,6 +26,10 @@ const game = Vue.component('game', {
     'gameState.status': function() {
       alert('game started!');
     }
-
+  },
+   mounted() {
+    if (this.gameState.gameId == null) {
+       this.$router.push({name: 'gamelist'});
+    }
   },
 });

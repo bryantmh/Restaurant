@@ -36,6 +36,10 @@ const gamelist = Vue.component('gamelist', {
     gameState: function() {
       this.$router.push({name: 'game'});
     }
-
+  },
+  mounted() {
+    if (this.authToken == null) {
+       this.$router.push({name: 'login'});
+    }
   },
 });
