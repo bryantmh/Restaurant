@@ -11,10 +11,6 @@ var LoginSuccess = function(params){
     };
 }
 
-// var RegisterSuccess = function(params){
-//     return {"message": 'You have registered successfully'};
-// }
-
 var CreateGameSuccess = function(params){
     return {'gameState':params.data.game};
 }
@@ -24,6 +20,9 @@ var JoinGameSuccess = function(params){
 }
 
 
+// var RegisterSuccess = function(params){
+//     return {"message": 'You have registered successfully'};
+// }
 
 var GameCreated = function(params) {
 	// gamestate Object

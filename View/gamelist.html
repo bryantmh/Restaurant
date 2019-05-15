@@ -10,6 +10,7 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" @click="createGame('Game Name goes here')">Create New Game</button>
+    <input type="text" class="form-control" id="gamename" v-model="gamename" placeholder="Enter a name for your game" style="width: 50%; display: inline-block">
+    <button type="button" class="btn btn-primary" @click="createGame(gamename)">Create New Game</button>
   </div>
 </div>

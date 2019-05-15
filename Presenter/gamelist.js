@@ -13,7 +13,7 @@ const gamelist = Vue.component('gamelist', {
     createGame(gamename) {
       var dataOut = {
         senderId: this.clientId,
-        command: 'CreateGame', // This should be login on real thing
+        command: 'CreateGame',
         data: {'name': gamename},
         gameId: null,
         recipientId: null
@@ -23,7 +23,7 @@ const gamelist = Vue.component('gamelist', {
     joinGame(gameId) {
       var dataOut = {
         senderId: this.clientId,
-        command: 'JoinGame', // This should be login on real thing
+        command: 'JoinGame',
         data: {'gameId': gameId},
         gameId: null,
         recipientId: null
