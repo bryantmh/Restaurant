@@ -25,7 +25,7 @@ const app = new Vue({
         this.socket.onmessage = (event) => {
             var commandIn = JSON.parse(event.data);
             var retVal = execute(commandIn);
-            if(retVal !== 'undefined' || typeof retVal != 'object'){
+            if(retVal == 'undefined' || typeof retVal != 'object'){
              console.log(retVal);
          } else {
             for (var i in retVal) {
