@@ -35,6 +35,10 @@ const gamelist = Vue.component('gamelist', {
   watch: {
     gameState: function() {
       this.$router.push({name: 'game'});
+    },
+    message: function() {
+      $( "#errorMessage" ).text(this.message);
+      $( "#errorMessage" ).css( "display", "block" );
     }
   },
   mounted() {

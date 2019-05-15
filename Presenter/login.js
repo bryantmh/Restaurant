@@ -19,7 +19,18 @@ const login = Vue.component('login', {
             recipientId: null
       };
       this.$parent.commandHandler(JSON.stringify(dataOut));
-  	},
+    },
+    // login(username, password) {
+    //   console.log(username);
+    //   var dataOut = {
+    //         senderId: null,
+    //         command: 'Error',
+    //         data: "Incorrect Username/Password",
+    //         gameId: null,
+    //         recipientId: null
+    //   };
+    //   this.$parent.commandHandler(JSON.stringify(dataOut));
+  	// },
   	register(username, password) {
       var dataOut = {
             senderId: '',
@@ -29,12 +40,17 @@ const login = Vue.component('login', {
             recipientId: ''
       };
       this.$parent.commandHandler(JSON.stringify(dataOut));
-  	},
+    },
   },
 
   watch: {
     authToken: function() {
       this.$router.push({name: 'gamelist'});
+    },
+    message: function() {
+      console.log("in message watch handler");
+      $( "#errorMessage" ).text(this.message);
+      $( "#errorMessage" ).css( "display", "block" );
     }
   },
 

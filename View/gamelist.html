@@ -1,12 +1,13 @@
 <div class="page-content" role="main">
   <div id="content">
+    <div style="display:none" id="errorMessage" class="alert alert-warning" role="alert"></div>
     <h1>Select a Game</h1>
     <div v-for="game in games">
       <div class="card">
         <div class="card-body">
           <h2>{{game.name}}</h2>
           <p>{{game.playerList.length}} / 5</p>
-          <button type="button" class="btn btn-primary" @click="joinGame(game.gameId)">Join Game</button>
+          <button type="button" v-if="game.playerList.length < 5" class="btn btn-primary" @click="joinGame(game.gameId)">Join Game</button>
         </div>
       </div>
     </div>

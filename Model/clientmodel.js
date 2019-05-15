@@ -6,7 +6,7 @@ const data = {
     // games: [{
     //     gameOwner: "Me",//player id,
     //     gameId: "123",
-    //     players: [{playerId: "myID", screenName: "Me"}, {playerId: 'sdfasdf', screenName: "You"}], // player object with playerId and screenName
+    //     players: [{playerId: "myID", screenName: "Me"}, {playerId: 'sdfasdf', screenName: "You"},{playerId: "myID", screenName: "Me"}, {playerId: 'sdfasdf', screenName: "You"}], // player object with playerId and screenName
     //     status: "created" //created or started
     // },],
     games: [],
@@ -25,7 +25,7 @@ const data = {
     authToken: null,
     socket: null,
     clientId: null,
-    gameId: "gameid123",
+    gameId: '',
     message: null,
     username: null,
     password: null,

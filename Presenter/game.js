@@ -25,6 +25,10 @@ const game = Vue.component('game', {
   watch: {
     'gameState.status': function() {
       alert('game started!');
+    },
+    message: function() {
+      $( "#errorMessage" ).text(this.message);
+      $( "#errorMessage" ).css( "display", "block" );
     }
   },
    mounted() {

@@ -52,6 +52,7 @@ const app = new Vue({
                             break;
                         case 'error':
                             console.log(retVal[i]);
+                            this.message = retVal[i].data;
                             break;
                         default:
                             this[i] = retVal[i];
@@ -66,6 +67,7 @@ const app = new Vue({
     },
     mounted() {
         this.socket = new WebSocket("ws://localhost:5001");
+        // this.socket = new WebSocket("wss://echo.websocket.org");
     },
     watch: {
         socket: function() {
