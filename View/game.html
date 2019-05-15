@@ -1,7 +1,7 @@
 <div class="page-content" role="main">
 	<div id="content">
   		<h1>Waiting for game to start...</h1>
-  		<div v-for="player in gameState.players">
+  		<div v-for="player in gameState.playerList">
   			<h3>{{player.screenName}}</h3>
   		</div>
   		<button type="button" @click="startGame()" class="btn btn-primary btn-lg">Start Game</button>
