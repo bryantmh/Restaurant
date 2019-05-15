@@ -20,6 +20,8 @@ const data = {
     clientId: null,
     gameId: null,
     message: null,
+    username: null,
+    password: null,
 };
 
 

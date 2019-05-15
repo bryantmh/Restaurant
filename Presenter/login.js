@@ -10,6 +10,7 @@ const login = Vue.component('login', {
   },
   methods: {
   	login(username, password) {
+      console.log(username);
       var dataOut = {
             senderId: null,
             command: 'Login',

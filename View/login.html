@@ -3,10 +3,10 @@
 		<form class="login-form" action="">
 			<div class="form-group">
 				<h1>Login or Register</h1>
-				<input type="text" class="form-control" placeholder="username" id="username">
-				<input type="password" class="form-control" placeholder="password" id="password">
-				<button type="button" class="btn btn-primary column" @click="login($('#username').val(), $('#password').val())">Login</button>
-				<button type="button" class="btn btn-primary column" @click="login($('#username').val(), $('#password').val())">Register</button>
+				<input type="text" class="form-control" placeholder="username" id="username" v-model="username">
+				<input type="password" class="form-control" placeholder="password" id="password" v-model="password">
+				<button type="button" class="btn btn-primary column" @click="login(username, password)">Login</button>
+				<button type="button" class="btn btn-primary column" @click="register(username, password)">Register</button>
 			</div>
 		</form>
 	</div>
