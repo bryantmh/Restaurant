@@ -34,22 +34,11 @@ const app = new Vue({
 						case 'newgame':
 							games.push(retval[i]);
 							break;
-						case 'mygame':
-							gamestate = retval[i];
-							var dataOut = {
-								senderid: gamestate.gameowner,
-								command: 'JoinGame',
-								data: {'gameid': gamestate.gameid},
-								gameid: gamestate.gameid,
-								recipientid: null,
-							}
-							this.commandHandler(JSON.stringify(dataOut));
-							break;
 						case 'startgame':
 							alert('game started!');
 							break;
 						case 'playerjoined':
-							gamestate.playerlist.push(retval[i]);
+							gameState.playerlist.push(retval[i]);
 							break;
 						case 'error':
 							console.log(retval[i]);

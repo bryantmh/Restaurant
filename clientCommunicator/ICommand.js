@@ -3,30 +3,27 @@ function execute(command){
     return retVal;
 }
 
-// var getGameList = function(params){
-//     return "game list";
-// }
-
-// var playerjoined = function(params){
-//     return "player joined"
-// }
-
 var LoginSuccess = function(params){
-    console.log(params);
-    return {"authToken": "authtoken"};
-    // also returns group of gamestate objects
+    return {
+        "clientId": params.senderId,
+        "authToken": params.data.authToken,
+        "games": params.data.gameList
+    };
 }
 
 var RegisterSuccess = function(params){
-    console.log('registered successfully');
-    return 'you have registered successfully';
+    return {"message": 'You have registered successfully'};
 }
 
 var CreateGameSuccess = function(params){
-    // gamestate object
-    // will call join game command
-    return {'mygame':params.data};
+    return {'gameState':params.data.game};
 }
+
+var JoinGameSuccess = function(params){
+    return {"gameState":params.data.game};
+}
+
+
 
 var GameCreated = function(params) {
 	// gamestate Object
@@ -34,13 +31,8 @@ var GameCreated = function(params) {
     return {'newgame': params.data};
 }
 
-var JoinGameSuccess = function(params){
-    return {"gamestate":params.data};
-    // gamestate object
-}
-
 var StartGameSuccess = function (params){
-    return {"start game":true};
+    return {"startgame":true};
     // returns nothing
     // Just put a message saying game has started
 }

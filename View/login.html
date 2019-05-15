@@ -5,12 +5,8 @@
 				<h1>Login or Register</h1>
 				<input type="text" class="form-control" placeholder="username" id="username">
 				<input type="password" class="form-control" placeholder="password" id="password">
-				<button type="button" class="btn btn-primary column" @click="login('username', 'password')">Login</button>
-				<button type="button" class="btn btn-primary column">Register</button>
-				<!-- {{ $store.state.enteredUsername }}.
-				{{ enteredUsername }}
-				{{ enteredPassword }} -->
-			    <!-- <button @click="setEnteredUsername('Stuff')">+</button> -->
+				<button type="button" class="btn btn-primary column" @click="login($('#username').val(), $('#password').val())">Login</button>
+				<button type="button" class="btn btn-primary column" @click="login($('#username').val(), '$('#password').val()')">Register</button>
 			</div>
 		</form>
 	</div>
