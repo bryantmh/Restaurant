@@ -31,8 +31,8 @@ var GameCreated = function(params) {
     return {'newgame': params.data};
 }
 
-var StartGameSuccess = function (params){
-    return {"startgame":true};
+var StartGame = function (params){
+    return {'startgame':true};
     // returns nothing
     // Just put a message saying game has started
 }

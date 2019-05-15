@@ -9,16 +9,22 @@ const data = {
         players: [{playerId: "myID", screenName: "Me"}, {playerId: 'sdfasdf', screenName: "You"}], // player object with playerId and screenName
         status: "created" //created or started
     },],
+    // gameState: {
+    //     gameOwner: null,//player id,
+    //     gameId: null,
+    //     players: [], // player object with playerId and screenName
+    //     status: null //created or started
+    // },
     gameState: {
-        gameOwner: null,//player id,
-        gameId: null,
-        players: [], // player object with playerId and screenName
-        status: null //created or started
+        gameOwner: "Owner",//player id,
+        gameId: "gameid123",
+        players: [{playerId: "Owner", screenName: "my name"}, {playerId: 'sdfasdf', screenName: "You"}], // player object with playerId and screenName
+        status: "created" //created or started
     },
     authToken: null,
     socket: null,
     clientId: null,
-    gameId: null,
+    gameId: "gameid123",
     message: null,
 };
 

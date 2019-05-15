@@ -26,19 +26,20 @@ const app = new Vue({
             console.log(event);
             var commandIn = JSON.parse(event.data);
             var retVal = execute(commandIn);
-            if(retVal !== 'undefined' || typeof retVal != 'object'){
+            if(retVal == 'undefined' || typeof retVal != 'object'){
               	console.log(retVal);
             } else {
 				for (var i in retVal) {
 					switch(i){
 						case 'newgame':
-							games.push(retval[i]);
+							this.games.push(retval[i]);
 							break;
-						case 'startgame':
-							alert('game started!');
+            case 'startgame':
+              //alert('game started!');
+              this.gameState.status = "started";
 							break;
 						case 'playerjoined':
-							gameState.playerlist.push(retval[i]);
+							this.gameState.playerlist.push(retval[i]);
 							break;
 						case 'error':
 							console.log(retval[i]);
