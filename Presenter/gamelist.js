@@ -13,10 +13,12 @@ const gamelist = Vue.component('gamelist', {
             this.game.numberOfPlayers++;
     },
     createGame() {
-
+      // data: name of game
+      // gameid
     },
     joinGame() {
-    	
+    	// data: name of game, 
+      // gameid
     }
   },
 });

@@ -32,6 +32,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.1.0/vuex.js"></script>
 
 		<!-- Our custom presenters and model -->
+		<script src="./clientCommunicator/ICommand.js"></script>
 		<script src="./Model/clientmodel.js"></script>
 		<script src="./Presenter/game.js"></script>
 		<script src="./Presenter/gamelist.js"></script>

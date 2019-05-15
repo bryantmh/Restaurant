@@ -1,39 +1,42 @@
 /////////////////////
 // Login Component //
 /////////////////////
-const Socket = () => import('./clientCommunicator/socket.js')
-
-const loginData = {
-	enteredPassword: "stuff and things",
-	socket: Socket,
-}
 
 const login = Vue.component('login', {
   template: loginHTML,
 
   data() {
-    return loginData
+    return data
   },
   methods: {
-  	login() {
-  		this.socket.data =  { socket: . . .
-  		}
-  		this.socket.connect()
+  	login(username, password) {
+      var dataOut = {
+            senderid: null,
+            command: 'Login', // This should be login on real thing
+            data: {'username': username, 'password': password},
+            gameid: null,
+            recipientid: null
+      };
+      this.$parent.commandHandler(JSON.stringify(dataOut));
   	},
-  	register() {
+  	register(username, password) {
+      var dataOut = {
+            senderid: null,
+            command: 'Register',
+            data: {'username': username, 'password': password},
+            gameid: null,
+            recipientid: null
+      };
+      this.$parent.commandHandler(JSON.stringify(dataOut));
+  	},
+  },
 
-  	}
-  },
   watch: {
-  	Vuex.authToken() {
-  		doMything()
-  		// var retVal = IComamnd.execute(socket.commandIn)
-  	}
+    authToken: function() {
+      this.$router.push({name: 'gamelist'});
+    }
+    // todo watches on data from login and register
+  
   },
-  computed: Vuex.mapGetters([
-    'enteredUsername'
-  ]),
-  methods: Vuex.mapActions([
-    'setEnteredUsername',
-  ])
+
 });
