@@ -10,12 +10,9 @@ const gamelist = Vue.component('gamelist', {
   },
 
   methods: {
-  	incrementPlayers(game) {
-            this.game.numberOfPlayers++;
-    },
-    createGame(gamename, clientid) {
+    createGame(gamename) {
       var dataOut = {
-        senderId: clientId,
+        senderId: this.clientId,
         command: 'CreateGame', // This should be login on real thing
         data: {'name': gamename},
         gameId: null,
@@ -23,11 +20,11 @@ const gamelist = Vue.component('gamelist', {
       };
       this.$parent.commandHandler(JSON.stringify(dataOut));
     },
-    joinGame(gameId, clientid) {
+    joinGame(gameId) {
       var dataOut = {
-        senderId: clientId,
+        senderId: this.clientId,
         command: 'JoinGame', // This should be login on real thing
-        data: {'gameid': gameId},
+        data: {'gameId': gameId},
         gameId: null,
         recipientId: null
       };
