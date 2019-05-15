@@ -3,11 +3,11 @@
 /////////////////
 
 const data = {
-    games: {},
+    games: [],
     gameState: {
-        gameowner: //player id,
+        gameowner: null,//player id,
         gameid: null,
-        playerlist: [//player ids]
+        playerlist: [],//player ids]
         status: null //created or started
     },
     authToken: null,

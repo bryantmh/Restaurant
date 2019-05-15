@@ -18,38 +18,42 @@ var LoginSuccess = function(params){
 }
 
 var RegisterSuccess = function(params){
-    return "register";
+    console.log('registered successfully');
+    return 'you have registered successfully';
 }
 
 var CreateGameSuccess = function(params){
-    return "createGame";
     // gamestate object
     // will call join game command
+    return {'mygame':params.data};
 }
 
 var GameCreated = function(params) {
 	// gamestate Object
-	// add to gamelist
+    // add to gamelist
+    return {'newgame': params.data};
 }
 
 var JoinGameSuccess = function(params){
-    return "join game";
+    return {"gamestate":params.data};
     // gamestate object
 }
 
 var StartGameSuccess = function (params){
-    return "start game";
+    return {"start game":true};
     // returns nothing
     // Just put a message saying game has started
 }
 
 var PlayerJoinedGame = function(params) {
 	// new player id
-	// add that to gamestate object
+    // add that to gamestate object
+    return {'playerjoined':params.data};
 }
 
 var Error = function(params) {
-	return "error";
 	// try and send command again unless login
-	// display to user
+    // display to user
+
+    return {'error': params};
 }
