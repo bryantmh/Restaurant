@@ -4,7 +4,7 @@
     <div v-for="game in games">
       <div class="card">
         <div class="card-body">
-          <h2>{{game.gameOwner}}'s Game</h2>
+          <h2>{{game.name}}'s Game</h2>
           <p>{{game.playerList.length}} / 5</p>
           <button type="button" class="btn btn-primary" @click="joinGame(game.gameId)">Join Game</button>
         </div>
