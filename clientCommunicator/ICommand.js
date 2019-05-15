@@ -5,15 +5,15 @@ function execute(command){
 
 var LoginSuccess = function(params){
     return {
+        'login' : "Logged In",
         "clientId": params.senderId,
         "authToken": params.data.authToken,
-        "games": params.data.gameList
     };
 }
 
-var RegisterSuccess = function(params){
-    return {"message": 'You have registered successfully'};
-}
+// var RegisterSuccess = function(params){
+//     return {"message": 'You have registered successfully'};
+// }
 
 var CreateGameSuccess = function(params){
     return {'gameState':params.data.game};
