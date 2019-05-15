@@ -13,11 +13,11 @@ var LoginSuccess = function(params){
 }
 
 var CreateGameSuccess = function(params){
-    return {'gameState':params.data.game};
+    return {'gameState':JSON.parse(params.data)};
 }
 
 var JoinGameSuccess = function(params){
-    return {"gameState":params.data.game};
+    return {"gameState":JSON.parse(params.data)};
 }
 
 var GameListSuccess = function(params) {
@@ -34,7 +34,7 @@ var GameCreated = function(params) {
     return {'newgame': params.data};
 }
 
-var StartGame = function (params){
+var StartGameSuccess = function (params){
     return {'startgame':true};
     // returns nothing
     // Just put a message saying game has started
