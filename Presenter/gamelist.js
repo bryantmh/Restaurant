@@ -34,7 +34,7 @@ const gamelist = Vue.component('gamelist', {
 
   watch: {
     gameState: function() {
-      this.$router.push({name: 'gamelist'});
+      this.$router.push({name: 'game'});
     }
 
   },
