@@ -14,7 +14,7 @@ const login = Vue.component('login', {
       var dataOut = {
             senderId: null,
             command: 'Login',
-            data: {'username': username, 'password': password},
+            data: JSON.stringify({'username': username, 'password': password}),
             gameId: null,
             recipientId: null
       };
@@ -22,19 +22,19 @@ const login = Vue.component('login', {
   	},
   	register(username, password) {
       var dataOut = {
-            senderId: null,
+            senderId: '',
             command: 'Register',
-            data: {'username': username, 'password': password},
-            gameId: null,
-            recipientId: null
+            data: JSON.stringify({'username': username, 'password': password}),
+            gameId: '',
+            recipientId: ''
       };
       this.$parent.commandHandler(JSON.stringify(dataOut));
   	},
   },
 
   watch: {
-    gameState: function() {
-      this.$router.push({name: 'game'});
+    authToken: function() {
+      this.$router.push({name: 'gamelist'});
     }
     // todo watches on data from login and register
   

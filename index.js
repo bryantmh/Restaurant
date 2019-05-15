@@ -39,19 +39,19 @@ const app = new Vue({
                                 gameId: null,
                                 recipientId: null
                             };
-                            this.$parent.commandHandler(JSON.stringify(dataOut));
+                            this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            this.games.push(retval[i]);
+                            this.games.push(retVal[i]);
                             break;
                         case 'startgame':
                             this.gameState.status = "started";
                             break;
                         case 'playerjoined':
-                            this.gameState.playerlist.push(retval[i]);
+                            this.gameState.playerlist.push(retVal[i]);
                             break;
                         case 'error':
-                            console.log(retval[i]);
+                            console.log(retVal[i]);
                             break;
                         default:
                             this[i] = retVal[i];
@@ -65,7 +65,7 @@ const app = new Vue({
         },
     },
     mounted() {
-        this.socket = new WebSocket("wss://echo.websocket.org");
+        this.socket = new WebSocket("ws://localhost:5001");
     },
     watch: {
         socket: function() {

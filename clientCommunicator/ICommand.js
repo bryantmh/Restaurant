@@ -1,13 +1,14 @@
 function execute(command){
-    var retVal = eval(command.command)(command.data);
+    var retVal = eval(command.command)(command);
     return retVal;
 }
 
 var LoginSuccess = function(params){
+    console.log(params)
     return {
         'login' : "Logged In",
         "clientId": params.senderId,
-        "authToken": params.data.authToken,
+        "authToken": JSON.parse(params.data).authToken,
     };
 }
 
@@ -19,6 +20,9 @@ var JoinGameSuccess = function(params){
     return {"gameState":params.data.game};
 }
 
+var GameListSuccess = function(params) {
+    return {"games": JSON.parse(params.data).games};
+}
 
 // var RegisterSuccess = function(params){
 //     return {"message": 'You have registered successfully'};

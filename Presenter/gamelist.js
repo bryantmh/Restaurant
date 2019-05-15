@@ -14,7 +14,7 @@ const gamelist = Vue.component('gamelist', {
       var dataOut = {
         senderId: this.clientId,
         command: 'CreateGame',
-        data: {'name': gamename},
+        data: JSON.stringify({'name': gamename}),
         gameId: null,
         recipientId: null
       };
@@ -24,7 +24,7 @@ const gamelist = Vue.component('gamelist', {
       var dataOut = {
         senderId: this.clientId,
         command: 'JoinGame',
-        data: {'gameId': gameId},
+        data: JSON.stringify({'gameId': gameId}),
         gameId: null,
         recipientId: null
       };
