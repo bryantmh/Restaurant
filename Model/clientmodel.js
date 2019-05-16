@@ -13,7 +13,7 @@ const data = {
     gameState: {
         gameOwner: null,//player id,
         gameId: null,
-        playerList: [], // player object with playerId and screenName
+        playerList: [], // player object with playerId, gameId, and screenName
         status: null //created or started
     },
     // gameState: {
@@ -30,6 +30,7 @@ const data = {
     username: null,
     password: null,
     gamename: null,
+    //playerId: null,
 };
 
 

@@ -4,15 +4,19 @@ function execute(command){
 }
 
 var LoginSuccess = function(params){
-    console.log(params)
+    // console.log(params)
+    console.log("params data:")
+    console.log(params.data.playerId)
     return {
         'login' : "Logged In",
-        "clientId": params.senderId,
+        //"playerId": JSON.parse(params.data).playerId,
+        "clientId": params.recipientId,
         "authToken": JSON.parse(params.data).authToken,
     };
 }
 
 var CreateGameSuccess = function(params){
+    console.log(params.data);
     return {'gameState':JSON.parse(params.data)};
 }
 
@@ -24,9 +28,13 @@ var GameListSuccess = function(params) {
     return {"games": JSON.parse(params.data).games};
 }
 
-// var RegisterSuccess = function(params){
-//     return {"message": 'You have registered successfully'};
-// }
+var RegisterSuccess = function(params){
+    return {
+        'login' : "Logged In",
+        "clientId": params.recipientId,
+        "authToken": JSON.parse(params.data).authToken,
+    };
+}
 
 var GameCreated = function(params) {
 	// gamestate Object

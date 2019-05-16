@@ -24,7 +24,13 @@ const app = new Vue({
         socketRun(){
             this.socket.onmessage = (event) => {
                 var commandIn = JSON.parse(event.data);
+                console.log("command received:");
+                console.log(commandIn);
+
+
                 var retVal = execute(commandIn);
+                console.log("retVal received:");
+                console.log(retVal);
                 if (retVal == 'undefined' || typeof retVal != 'object'){
                     console.log(retVal);
                 } 
@@ -32,27 +38,40 @@ const app = new Vue({
                     for (var i in retVal) {
                         switch(i) {
                         case 'login':
+                            this.clientId = retVal.clientId;
+                            //this.playerId = retVal.playerId;
                             var dataOut = {
-                                senderId: null,
+                                senderId: retVal.clientId,
+                                //playerId: retVal.playerId,
                                 command: 'GetGameList',
                                 data: null,
                                 gameId: null,
                                 recipientId: null
                             };
+                            console.log("login data sent:");
+                            console.log(dataOut);
+
                             this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            this.games.push(retVal[i]);
+                            var data = retVal.newgame;
+                            this.games.push(JSON.parse(data).game);
                             break;
                         case 'startgame':
+                            console.log("in startgame");
+                            var player = {playerId: this.clientId,gameId:this.gameId,screenName:this.username};
+                            this.gamelist.playerList.push(player)
                             this.gameState.status = "started";
                             break;
                         case 'playerjoined':
-                            this.gameState.playerlist.push(retVal[i]);
+                            this.gameState.playerList.push(retVal[i]);
                             break;
                         case 'error':
-                            console.log(retVal[i]);
-                            this.message = retVal[i].data;
+                            console.log(retVal); 
+                            console.log(retVal.error); 
+                            var error = retVal.error.data;
+                            console.log(JSON.parse(error).message);
+                            this.message = JSON.parse(error).message;
                             break;
                         default:
                             this[i] = retVal[i];
@@ -62,11 +81,14 @@ const app = new Vue({
             }
         },
         commandHandler: function(data){
+           console.log(data);
             this.socket.send(data);
         },
     },
     mounted() {
-        this.socket = new WebSocket("ws://localhost:5001");
+        this.socket = new WebSocket("ws://192.168.1.6:5001");
+        //this.socketRun();
+
         // this.socket = new WebSocket("wss://echo.websocket.org");
     },
     watch: {

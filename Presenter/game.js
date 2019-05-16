@@ -13,7 +13,7 @@ const game = Vue.component('game', {
         senderId: this.clientId,
         data: null,
         recipientId: null,
-        gameId: this.gameId,
+        gameId: this.gameState.gameId,
         command: 'StartGame', // This should be login on real thing
       };
       this.$parent.commandHandler(JSON.stringify(dataOut));
@@ -24,6 +24,8 @@ const game = Vue.component('game', {
   },
   watch: {
     'gameState.status': function() {
+      $( "#errorMessage" ).text("Game started! Woohoo!");
+      $( "#errorMessage" ).css( "display", "block" );
       alert('game started!');
     },
     message: function() {
