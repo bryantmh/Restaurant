@@ -88,7 +88,7 @@ const app = new Vue({
                             this.message = errorObject.message
                             break;
                         default:
-                            this[i] = retVal[i];
+                            this[i] = retVal[i].newgame;
                         }
                     }
                 }
