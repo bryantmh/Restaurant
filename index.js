@@ -54,7 +54,7 @@ const app = new Vue({
                             this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            var data = retVal[i].newgame;
+                            var data = retVal.newgame;
                             this.games.push(JSON.parse(data).game);
                             break;
                         case 'startgame':
@@ -88,7 +88,7 @@ const app = new Vue({
                             this.message = errorObject.message
                             break;
                         case 'gameState':
-                            this[i] = retVal[i].newgame;
+                            this[i] = retVal.newgame;
                             break;
                         default:
                             this[i] = retVal[i];
