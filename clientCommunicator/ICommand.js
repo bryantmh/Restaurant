@@ -17,7 +17,7 @@ var LoginSuccess = function(params){
 
 var CreateGameSuccess = function(params){
     console.log(params.data);
-    return {'gameState':JSON.parse(params.data)};
+    return {'gameState':JSON.parse(params.data), "newgame":params.data};
 }
 
 var JoinGameSuccess = function(params){
