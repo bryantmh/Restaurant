@@ -66,13 +66,16 @@ const app = new Vue({
                         case 'playerjoined':
                             // console.log(retVal[i]);
                             // console.log(JSON.parse(retVal[i]));
-                            var gameid = JSON.parse(retVal[i].game)['player']['gameId'];
+                            console.log(gameId)
+                            console.log(retVal)
+                            console.log(JSON.parse(retVal[i]))
+                            var gameid = JSON.parse(retVal[i])['player']['gameId'];
                             for(var i = 0; i < this.games.length; i++){
                                 if(this.games[i].gameId == gameId){
-                                    this.$set(this.games[i].playerList, JSON.parse(retVal[i].game)['player']['playerId'], JSON.parse(retVal[i])['player']);
+                                    this.$set(this.games[i].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
                                 }
                             }
-                            if(this.gameState.gameId == gameid){
+                            if(this.gameState.gameId == gameId){
                                 this.$set(this.gameState.playerList, JSON.parse(retVal[i].game)['player']['playerId'], JSON.parse(retVal[i])['player']);
                             }
                             
