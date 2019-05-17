@@ -54,7 +54,13 @@ const app = new Vue({
                             this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            var data = retVal.newgame;
+                            var data = null;
+                            if(typeof retVal.newGame !== 'undefined'){
+                                data = retval[i];
+                            } else {
+                                data = retVal.newgame;
+                            }
+                            
                             this.games.push(JSON.parse(data).game);
                             break;
                         case 'startgame':
