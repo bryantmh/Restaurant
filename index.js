@@ -54,7 +54,7 @@ const app = new Vue({
                             this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            var data = retVal.newgame;
+                            var data = retVal[i].newgame;
                             this.games.push(JSON.parse(data).game);
                             break;
                         case 'startgame':
