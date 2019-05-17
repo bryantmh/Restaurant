@@ -72,11 +72,13 @@ const app = new Vue({
                             // this.gameState.playerList[JSON.parse(retVal[i])['player']['playerId']] = JSON.parse(retVal[i])['player'];
                             break;
                         case 'error':
-                            // console.log(retVal); 
+                            console.log(retVal); 
                             // console.log(retVal.error); 
                             // var error = retVal[.error.data;
                             // console.log(JSON.parse(error).message);
-                            this.message = JSON.stringify(retVal[i]);
+                            // this.message = JSON.stringify(retVal[i]);
+                            var errorObject = JSON.parse(retVal[i].data)
+                            this.message = errorObject.message
                             break;
                         default:
                             this[i] = retVal[i];
@@ -91,7 +93,8 @@ const app = new Vue({
         },
     },
     mounted() {
-        this.socket = new WebSocket("ws://localhost:5001");
+        // this.socket = new WebSocket("ws://localhost:8080/ticket-to-ride-back-end/");
+        this.socket = new WebSocket("ws://localhost:5001/");
         //this.socketRun();
 
         // this.socket = new WebSocket("wss://echo.websocket.org");
