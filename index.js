@@ -66,11 +66,12 @@ const app = new Vue({
                         case 'playerjoined':
                             // console.log(retVal[i]);
                             // console.log(JSON.parse(retVal[i]));
-                            if(typeof this.games != 'undefined'){
-                                var gameid = JSON.parse(retVal[i])['player']['gameId'];
-                                this.$set(this.games[gameid].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                            var gameid = JSON.parse(retVal[i])['player']['gameId'];
+                            this.$set(this.games[gameid].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                            if(this.gameState.gameId == gameid){
+                                this.$set(this.gameState.playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
                             }
-                            this.$set(this.gameState.playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                            
                             // this.gameState.playerList[JSON.parse(retVal[i])['player']['playerId']] = JSON.parse(retVal[i])['player'];
                             break;
                         case 'error':
@@ -96,7 +97,7 @@ const app = new Vue({
     },
     mounted() {
         // this.socket = new WebSocket("ws://localhost:8080/ticket-to-ride-back-end/");
-        this.socket = new WebSocket("ws://localhost:5001/");
+        this.socket = new WebSocket("ws://10.37.41.216:8080/ticket-to-ride-back-end/");
         //this.socketRun();
 
         // this.socket = new WebSocket("wss://echo.websocket.org");
