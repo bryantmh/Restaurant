@@ -73,7 +73,11 @@ const app = new Vue({
                             // console.log(retVal[i]);
                             // console.log(JSON.parse(retVal[i]));
                             var gameid = JSON.parse(retVal[i])['player']['gameId'];
-                            this.$set(this.games[gameid].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                            for(var i = 0; i < this.games.length; i++){
+                                if(this.games[i].gameId == gameId){
+                                    this.$set(this.games[i].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                                }
+                            }
                             if(this.gameState.gameId == gameid){
                                 this.$set(this.gameState.playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
                             }
