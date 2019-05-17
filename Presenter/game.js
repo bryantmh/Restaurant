@@ -31,7 +31,7 @@ const game = Vue.component('game', {
     message: function() {
       $( "#errorMessage" ).text(this.message);
       $( "#errorMessage" ).css( "display", "block" );
-    }
+    },
   },
    mounted() {
     if (this.gameState.gameId == null) {
