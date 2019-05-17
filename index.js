@@ -88,7 +88,7 @@ const app = new Vue({
                             this.message = errorObject.message
                             break;
                         case 'gameState':
-                            this[i] = JSON.parse(retVal.newgame);
+                            this[i] = JSON.parse(retVal.newgame).game;
                             break;
                         default:
                             this[i] = retVal[i];
