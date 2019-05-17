@@ -29,11 +29,11 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.1.0/vuex.js"></script>
 
 		<!-- Our custom presenters and model -->
-		<script src="./clientCommunicator/ICommand.js"></script>
 		<script src="./Model/clientmodel.js"></script>
+		<script src="./ClientCommunicator/Command.js"></script>
+		<script src="./ClientCommunicator/ServerProxy.js"></script>
 		<script src="./Presenter/game.js"></script>
 		<script src="./Presenter/gamelist.js"></script>
 		<script src="./Presenter/login.js"></script>

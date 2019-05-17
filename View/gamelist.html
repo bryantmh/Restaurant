@@ -1,6 +1,6 @@
 <div class="page-content" role="main">
   <div id="content">
-    <div style="display:none" id="errorMessage" class="alert alert-warning" role="alert"></div>
+    <div id="errorMessage" v-if="message" class="alert alert-warning" role="alert">{{message}}</div>
     <h1>Select a Game</h1>
     <div v-for="game in games">
       <div class="card" v-if="Object.keys(game.playerList).length < 5">
