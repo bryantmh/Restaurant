@@ -21,7 +21,7 @@ var CreateGameSuccess = function(params){
 }
 
 var JoinGameSuccess = function(params){
-    return {"gameState":JSON.parse(params.data)};
+    return {"gameState":params.data};
 }
 
 var GameListSuccess = function(params) {
