@@ -24,15 +24,15 @@ const app = new Vue({
         socketRun(){
             this.socket.onmessage = (event) => {
                 var commandIn = JSON.parse(event.data);
-                console.log("command received:");
-                console.log(commandIn);
+                // console.log("command received:");
+                // console.log(commandIn);
 
 
                 var retVal = execute(commandIn);
                 // console.log("retVal received:");
                 // console.log(retVal);
                 if (retVal == 'undefined' || typeof retVal != 'object'){
-                    console.log(retVal);
+                    // console.log(retVal);
                 } 
                 else {
                     for (var i in retVal) {
@@ -54,7 +54,7 @@ const app = new Vue({
                             this.commandHandler(JSON.stringify(dataOut));
                             break;
                         case 'newgame':
-                            var data = retVal.newgame;
+                            var data = retVal[i];
                             this.games.push(JSON.parse(data).game);
                             break;
                         case 'startgame':
@@ -66,23 +66,25 @@ const app = new Vue({
                         case 'playerjoined':
                             // console.log(retVal[i]);
                             // console.log(JSON.parse(retVal[i]));
-                            console.log(gameId)
-                            console.log(retVal)
-                            console.log(JSON.parse(retVal[i]))
-                            var gameid = JSON.parse(retVal[i])['player']['gameId'];
+                            // console.log(gameId)
+                            // console.log(retVal)
+                            // console.log(JSON.parse(retVal[i]))
+                            var temp = JSON.parse(retVal[i]);
+                            var gameid = temp['player']['gameId'];
+
                             for(var i = 0; i < this.games.length; i++){
-                                if(this.games[i].gameId == gameId){
-                                    this.$set(this.games[i].playerList, JSON.parse(retVal[i])['player']['playerId'], JSON.parse(retVal[i])['player']);
+                                if(this.games[i].gameId == gameid){
+                                    this.$set(this.games[i].playerList, temp['player']['playerId'], temp['player']);
                                 }
                             }
-                            if(this.gameState.gameId == gameId){
-                                this.$set(this.gameState.playerList, JSON.parse(retVal[i].game)['player']['playerId'], JSON.parse(retVal[i])['player']);
+                            if(this.gameState.gameId == gameid){
+                                this.$set(this.gameState.playerList, temp['player']['playerId'], temp['player']);
                             }
                             
                             // this.gameState.playerList[JSON.parse(retVal[i])['player']['playerId']] = JSON.parse(retVal[i])['player'];
                             break;
                         case 'error':
-                            console.log(retVal); 
+                            // console.log(retVal); 
                             // console.log(retVal.error); 
                             // var error = retVal[.error.data;
                             // console.log(JSON.parse(error).message);
@@ -91,7 +93,8 @@ const app = new Vue({
                             this.message = errorObject.message
                             break;
                         case 'gameState':
-                            this[i] = JSON.parse(retVal.newgame).game;
+                        // console.log(retVal[i]);
+                            this[i] = JSON.parse(retVal[i]).game;
                             break;
                         default:
                             this[i] = retVal[i];

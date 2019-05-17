@@ -5,8 +5,8 @@ function execute(command){
 
 var LoginSuccess = function(params){
     // console.log(params)
-    console.log("params data:")
-    console.log(params.data.playerId)
+    // console.log("params data:")
+    // console.log(params.data.playerId)
     return {
         'login' : "Logged In",
         //"playerId": JSON.parse(params.data).playerId,
@@ -16,11 +16,12 @@ var LoginSuccess = function(params){
 }
 
 var CreateGameSuccess = function(params){
-    console.log(params.data);
+    // console.log(params.data);
     return {'gameState':params.data, "newgame":params.data};
 }
 
 var JoinGameSuccess = function(params){
+    // console.log(params.data);
     return {"gameState":params.data};
 }
 
