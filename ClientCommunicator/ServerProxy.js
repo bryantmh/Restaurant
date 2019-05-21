@@ -5,7 +5,7 @@ class ServerProxy {
 		this.command = new Command();
 	}
 
-	socketRun(){
+	socketRun() {
 	    this.socket.onmessage = (event) => {
 	        var commandIn = JSON.parse(event.data);
 	        var newCommand = this.command.execute(commandIn);

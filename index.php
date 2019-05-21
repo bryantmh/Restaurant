@@ -32,6 +32,7 @@
 
 		<!-- Our custom presenters and model -->
 		<script src="./Model/clientmodel.js"></script>
+		<script src="./Model/loginmodel.js"></script>
 		<script src="./ClientCommunicator/Command.js"></script>
 		<script src="./ClientCommunicator/ServerProxy.js"></script>
 		<script src="./Presenter/game.js"></script>

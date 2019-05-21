@@ -1,12 +1,11 @@
 /////////////////////
 // Login Component //
 /////////////////////
-
 const login = Vue.component('login', {
     template: loginHTML,
 
     data() {
-        return data
+        return loginData
     },
 
     methods: {
@@ -18,7 +17,7 @@ const login = Vue.component('login', {
                 gameId: null,
                 recipientId: null
             };
-            this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            this.$parent.serverProxy.commandHandler(JSON.stringify(dataOut));
         },
 
   	    register(username, password) {
@@ -29,12 +28,12 @@ const login = Vue.component('login', {
                 gameId: '',
                 recipientId: ''
              };
-            this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            this.$parent.serverProxy.commandHandler(JSON.stringify(dataOut));
         },
     },
 
     watch: {
-        authToken: function() {
+        '$parent.authToken': function() {
             this.$router.push({name: 'gamelist'});
         },
     },

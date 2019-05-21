@@ -14,8 +14,6 @@ const data = {
     clientId: null,
     gameId: '',
     message: null,
-    username: null,
-    password: null,
     gamename: null,
     serverProxy: null
 };
