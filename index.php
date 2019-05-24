@@ -24,6 +24,7 @@
 			var gamelistHTML = <?php echo json_encode(file_get_contents("./View/gamelist.html"));?>;
 			var bankHTML = <?php echo json_encode(file_get_contents("./View/bank.html"));?>;
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
+			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/map.html"));?>;
 		</script>
 
 		<!-- Vue Packages -->

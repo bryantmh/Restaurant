@@ -22,9 +22,9 @@ const game = Vue.component('game', {
   	},
 
  	watch: {
-    	// 'gameState.status': function() {
-      	// 	this.message = "Game started! Woohoo!";
-    	// },
+    	'gameState.status': function() {
+      		this.message = "Game started! Woohoo!";
+    	},
   	},
 
    mounted() {
