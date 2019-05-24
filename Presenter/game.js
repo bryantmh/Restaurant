@@ -28,9 +28,11 @@ const game = Vue.component('game', {
   	},
 
    mounted() {
-    	if (this.gameState.gameId == null) {
-       		this.$router.push({name: 'gamelist'});
-    	}
+      this.clientId = "37";
+      this.gameState = mockGame;
+    	// if (this.gameState.gameId == null) {
+     //   		this.$router.push({name: 'gamelist'});
+    	// }
   	},
 
 });

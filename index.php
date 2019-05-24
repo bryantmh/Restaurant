@@ -23,6 +23,8 @@
 			var loginHTML = <?php echo json_encode(file_get_contents("./View/login.html"));?>;
 			var gameHTML = <?php echo json_encode(file_get_contents("./View/game.html"));?>;
 			var gamelistHTML = <?php echo json_encode(file_get_contents("./View/gamelist.html"));?>;
+			var bankHTML = <?php echo json_encode(file_get_contents("./View/bank.html"));?>;
+			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
 		</script>
 
 		<!-- Vue Packages -->
@@ -38,6 +40,8 @@
 		<script src="./Presenter/game.js"></script>
 		<script src="./Presenter/gamelist.js"></script>
 		<script src="./Presenter/login.js"></script>
+		<script src="./Presenter/bank.js"></script>
+		<script src="./Presenter/myinfo.js"></script>
 		<script src="./index.js"></script>
 	</body>
 </html>

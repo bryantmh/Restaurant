@@ -1,5 +1,5 @@
 .page-content { margin: 0 auto; max-width: 1200px; width: 100%; padding: 16px; box-sizing: border-box; flex-grow: 1; flex: 1 0 auto;}
-.containing-element { display: flex; flex-direction: column; height: 100%;}
+.containing-element { display: flex; flex-direction: column;}
 
 html, body { height: 100%;}
 
@@ -34,7 +34,7 @@ html, body { height: 100%;}
 }
 
 body {
-  background-image: url("https://grandgamersguild.com/wp-content/uploads/2018/01/ticket-to-ride-cover.jpg");
+  background-image: url("../img/ticket-to-ride-cover.jpg");
   background-size: cover;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,4 +52,8 @@ h1 {
   width: 45%;
   margin: 4px;
   font-size: 22px;
+}
+
+.cardCursor {
+   cursor: pointer;
 }

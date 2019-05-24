@@ -1,0 +1,13 @@
+<div style="width: 80%; height: 20%; background-color: white; text-align: center;">
+	<div class="card-group">
+		<div v-bind="gameState.playerList[clientId].trainCards"></div>
+		<div class="card" v-for="(number, kind) in gameState.playerList[clientId].trainCards">
+			{{number}}
+	  		<img class="card-img" :src="'./View/img/' + kind + 'Train.jpg'">
+	  	</div>
+	  	<div class="card cardCursor" @click="drawDestinationCards()">
+	  		{{gameState.playerList[clientId].destinationCards.length}}
+			<img class="card-img" src="./View/img/destinationCard.jpg">
+		</div>
+	</div>
+</div>
