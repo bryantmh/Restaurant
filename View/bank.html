@@ -1,13 +1,13 @@
-<div style="width: 10%; height: 80%; background-color: white; text-align: center; position: absolute; left: 90%;">
-	<span>{{destinationCardsLength}} Left</span>
+<div style="width: 10%; height: 80%; background-color: rgba(41, 41, 41, 0.816); text-align: center; position: absolute; left: 90%;">
 	<div class="card cardCursor" @click="drawDestinationCards()">
+		<span>{{destinationCardsLength}} Left</span>
 		<img class="card-img" src="./View/img/destinationCard.jpg">
 	</div>
 	<div class="card cardCursor" v-for="(faceUpCard, index) in gameState.faceUpTrainCards" @click="drawTrainCardFromFaceup(index)">
   		<img class="card-img" :src="'./View/img/' + faceUpCard + 'Train.jpg'">
   	</div>
-  	<span>{{trainCardsLength}} Left</span>
   	<div class="card cardCursor" @click="drawTrainCardFromDeck()">
+  		<span>{{trainCardsLength}} Left</span>
 		<img class="card-img" src="./View/img/trainCardBack.jpg">
 	</div>
 </div>
