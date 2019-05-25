@@ -74,18 +74,17 @@ const mockGame = {
 
 const data = {
     games: [],
-    gameState: mockGame,
-    // gameState: {
-    //     gameOwner: null, //player id,
-    //     gameId: null,
-    //     playerList: {}, // player object with playerId and player object
-    //     status: null,
-    //     name: null,
-    //     routes: {},
-    //     destinationCards: {},
-    //     trainCards: {},
-    //     faceUpTrainCards: {},
-    // },
+    gameState: {
+        gameOwner: null, //player id,
+        gameId: null,
+        playerList: {}, // player object with playerId and player object
+        status: null,
+        name: null,
+        routes: {},
+        destinationCards: {},
+        trainCards: {},
+        faceUpTrainCards: {},
+    },
     authToken: null,
     clientId: null,
     gameId: '',

@@ -19,10 +19,8 @@ const playerlist = Vue.component('playerlist', {
       
     },
     
-mounted() {
-    if (this.authToken == null) {
-            this.$router.push({name: 'login'});
-    }
-},
+    mounted() {
+
+    },
 
 });
