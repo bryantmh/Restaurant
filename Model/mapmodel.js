@@ -3,7 +3,6 @@
 //////////////
 
 const mapdata = {
-    mapName: null,
     cities: {
         Calgary: {name: 'Calgary', lat: 51.048615, lng: -114.070847, marker:null },
         Vancouver: {name: 'Vancouver', lat: 49.282730, lng: -123.120735, marker:null },

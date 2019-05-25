@@ -14,6 +14,7 @@
 		</div>
 
 		<!-- Other scripts -->
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5zCN1jF7qJqZvLl2pYZ-aYnyObZtHJj4"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -24,7 +25,7 @@
 			var gamelistHTML = <?php echo json_encode(file_get_contents("./View/gamelist.html"));?>;
 			var bankHTML = <?php echo json_encode(file_get_contents("./View/bank.html"));?>;
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
-			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/map.html"));?>;
+			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/google-map.html"));?>;
 		</script>
 
 		<!-- Vue Packages -->
@@ -43,8 +44,8 @@
 		<script src="./Presenter/login.js"></script>
 		<script src="./Presenter/bank.js"></script>
 		<script src="./Presenter/myinfo.js"></script>
-		<script src="./Presenter/googlemap.js"></script>
+		<script src="./Presenter/google-map.js"></script>
 		<script src="./index.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5zCN1jF7qJqZvLl2pYZ-aYnyObZtHJj4"></script>
+		
 	</body>
 </html>
