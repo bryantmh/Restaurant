@@ -17,6 +17,7 @@ html, body { height: 100%;}
 }
 
 #mapid {
+  margin-left:'20%';
   z-index: 2;
   overflow: visible;
   position: absolute;
