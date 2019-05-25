@@ -24,6 +24,7 @@
 			var gameHTML = <?php echo json_encode(file_get_contents("./View/game.html"));?>;
 			var gamelistHTML = <?php echo json_encode(file_get_contents("./View/gamelist.html"));?>;
 			var bankHTML = <?php echo json_encode(file_get_contents("./View/bank.html"));?>;
+			var playerlistHTML = <?php echo json_encode(file_get_contents("./View/playerlist.html"));?>;
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
 		</script>
 
@@ -41,6 +42,7 @@
 		<script src="./Presenter/gamelist.js"></script>
 		<script src="./Presenter/login.js"></script>
 		<script src="./Presenter/bank.js"></script>
+		<script src="./Presenter/playerlist.js"></script>
 		<script src="./Presenter/myinfo.js"></script>
 		<script src="./index.js"></script>
 	</body>

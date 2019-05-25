@@ -1,34 +1,11 @@
 /////////////////
 // Shared Data //
 /////////////////
-
-const data = {
-    games: [],
-    gameState: {
-        gameOwner: null, //player id,
-        gameId: null,
-        playerList: {}, // player object with playerId, gameId, and screenName
-        status: null,
-        name: null,
-        routes: {},
-        destinationCards: {},
-        trainCards: {},
-        faceUpTrainCards: {},
-    },
-    authToken: null,
-    clientId: null,
-    gameId: '',
-    message: null,
-    gamename: null,
-    serverProxy: null,
-    trainCardsLength: 0,
-    destinationCardsLength: 0,
-};
-
 const mockPlayer1 = {
     playerId: 37, 
     gameId: 42, 
     screenName: "Bob",
+    color: "#4286f4",
     trainCards: {
         blue: 3,
         black: 4,
@@ -42,7 +19,7 @@ const mockPlayer1 = {
     },
     destinationCards: [],
     trainCarsRemaining: 40,
-    score: 0,
+    score: 25,
     routesClaimed: []
 }
 
@@ -50,6 +27,7 @@ const mockPlayer2 = {
     playerId: 27, 
     gameId: 42, 
     screenName: "Joe",
+    color: "#e5000b",
     trainCards: {
         blue: 2,
         black: 5,
@@ -63,14 +41,17 @@ const mockPlayer2 = {
     },
     destinationCards: [],
     trainCarsRemaining: 40,
-    score: 0,
+    score: 17,
     routesClaimed: []
 }
+
+
 
 const mockGame = {
     gameOwner: 27,
     gameId: 42,
     playerList: {37: mockPlayer1, 27: mockPlayer2},
+    nextPlayer: 37,
     status: 'started',
     name: "Cool Game",
     routes: {},
@@ -88,3 +69,30 @@ const mockGame = {
     },
     faceUpTrainCards: {0: "blue", 1: "red", 2: "green", 3: "purple", 4: "black"},
 }
+
+
+
+const data = {
+    games: [],
+    gameState: mockGame,
+    // gameState: {
+    //     gameOwner: null, //player id,
+    //     gameId: null,
+    //     playerList: {}, // player object with playerId and player object
+    //     status: null,
+    //     name: null,
+    //     routes: {},
+    //     destinationCards: {},
+    //     trainCards: {},
+    //     faceUpTrainCards: {},
+    // },
+    authToken: null,
+    clientId: null,
+    gameId: '',
+    message: null,
+    gamename: null,
+    serverProxy: null,
+    trainCardsLength: 0,
+    destinationCardsLength: 0,
+};
+
