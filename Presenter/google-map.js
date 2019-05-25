@@ -83,13 +83,14 @@ const googlemap = Vue.component('google-map', {
           item.path = path;
           item.path.setMap(map);
           item.waypointmarker.setMap(map);
-        //   item.waypointmarker.addListener('click',this.claimRoute(item));
+          
+          item.waypointmarker.addListener('click', function(){              
+              item.path.setOptions( {
+                strokeColor: data.gameState.playerList[data.clientId].color,
+              });
+              this.setLabel(data.gameState.playerList[data.clientId].screenName);
+          });
       
-        });
-        window.google.maps.event.addListener(routemarker, 'dragend', (e) => {
-          var lat = routemarker.getPosition().lat();
-          var lng = routemarker.getPosition().lng();
-          document.getElementById('coor').textContent = "lat = " + lat + " lng = " + lng;
         });
     },
 
@@ -147,7 +148,7 @@ const googlemap = Vue.component('google-map', {
                     },
                     length: 3,
                     color: '#A0A0A0',
-                    owner: 'player 1',
+                    owner: '',
                     waypointMarker: null,
                     path: null
                   },
