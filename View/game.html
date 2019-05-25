@@ -1,10 +1,18 @@
-<div class="page-content" role="main">
-	<div id="content">
-		<div id="errorMessage" v-if="message" class="alert alert-warning" role="alert">{{message}}</div>
-  		<h1>Waiting for game to start...</h1>
-  		<div v-for="player in gameState.playerList">
-  			<h3>{{player.screenName}}</h3>
-  		</div>
-  		<button type="button" @click="startGame()" class="btn btn-primary btn-lg">Start Game</button>
-  	</div>
+<div role="main">
+	<div class="page-content" v-if="gameState.status != 'started'">
+		<div id="content">
+			<div id="errorMessage" v-if="message" class="alert alert-warning" role="alert">{{message}}</div>
+	  		<h1>Waiting for game to start...</h1>
+	  		<div v-for="player in gameState.playerList">
+	  			<h3>{{player.screenName}}</h3>
+	  		</div>
+	  		<button type="button" @click="startGame()" class="btn btn-primary btn-lg">Start Game</button>
+	  	</div> 	
+	</div>
+	<div v-else="">
+		<playerlist></playerlist>
+		<google-map></google-map>
+		<bank></bank>
+		<myinfo></myinfo>
+	</div>
 </div>

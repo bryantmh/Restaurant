@@ -6,6 +6,7 @@ const router = new VueRouter({
     { path: '/', component: login, name: 'login'},
     { path: '/gamelist', component: gamelist, name: 'gamelist'},
     { path: '/game', component: game, name: 'game'},
+    { path: '/playerlist', component: playerlist, name: 'playerlist'},
     ]
 });
 
