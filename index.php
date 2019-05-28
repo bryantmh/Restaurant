@@ -6,6 +6,8 @@
 		<title>Ticket to Ride</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="./View/style/app.css">
+		<link rel="stylesheet" type="text/css" href="./View/style/modal.css">
+
 	</head>
 	<body>
 
@@ -27,6 +29,7 @@
 			var playerlistHTML = <?php echo json_encode(file_get_contents("./View/playerlist.html"));?>;
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
 			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/google-map.html"));?>;
+			var destinationCardHTML = <?php echo json_encode(file_get_contents("./View/destination-card.html"));?>;
 		</script>
 
 		<!-- Vue Packages -->
@@ -34,7 +37,7 @@
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
-		<!-- Our custom presenters and model -->
+		<!-- Our custom presenters and models -->
 		<script src="./Model/clientmodel.js"></script>
 		<script src="./Model/loginmodel.js"></script>
 		<script src="./Model/mapmodel.js"></script>
@@ -47,6 +50,7 @@
 		<script src="./Presenter/playerlist.js"></script>
 		<script src="./Presenter/myinfo.js"></script>
 		<script src="./Presenter/google-map.js"></script>
+		<script src="./Presenter/destination-card.js"></script>
 		<script src="./index.js"></script>
 		
 	</body>

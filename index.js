@@ -7,6 +7,7 @@ const router = new VueRouter({
     { path: '/gamelist', component: gamelist, name: 'gamelist'},
     { path: '/game', component: game, name: 'game'},
     { path: '/playerlist', component: playerlist, name: 'playerlist'},
+    { path: '/destination-card', component: destinationCard, name: 'destinationCard'},
     ]
 });
 

@@ -6,18 +6,41 @@ const mockPlayer1 = {
     gameId: 42, 
     screenName: "Bob",
     color: "#4286f4",
-    trainCards: {
-        blue: 3,
-        black: 4,
-        brown: 2,
-        green: 7,
-        purple: 3,
-        red: 4,
-        white: 2,
-        yellow: 7,
-        wild: 2
+    cardBank: {
+        blueCards: [], // integer ids
+        brownCards: [],
+        greenCards: [],
+        purpleCards: [],
+        redCards: [],
+        whiteCards: [],
+        yellowCards: [],
+        wildCards: [],
+        destinationCards: [
+            {
+                startCity: "San Diego",
+                endCity: "Los Angeles",
+                pointValue: 5,
+                
+            },
+            {
+              startCity: "Salt Lake",
+              endCity: "Provo",
+              pointValue: 3,
+            }  // destination card list
+        ], // destination card objects
     },
-    destinationCards: [],
+    // trainCards: {
+    //     blue: [id,id,id],
+    //     black: 4,
+    //     brown: 2,
+    //     green: 7,
+    //     purple: 3,
+    //     red: 4,
+    //     white: 2,
+    //     yellow: 7,
+    //     wild: 2
+    // },
+    // destinationCards: [],
     trainCarsRemaining: 40,
     score: 25,
     routesClaimed: []
@@ -55,7 +78,22 @@ const mockGame = {
     status: 'started',
     name: "Cool Game",
     routes: {},
-    destinationCards: [],
+    destinationCards: [
+        {
+            startCity: "San Diego",
+            endCity: "Los Angeles",
+            pointValue: 5,
+            playerId: "some-id",
+            completed: false
+        },
+        {
+            startCity: "Salt Lake",
+            endCity: "Provo",
+            pointValue: 3,
+            playerId: "some-id",
+            completed: false
+        }  // destination card list
+    ], // destination card objects
     trainCards: {
         blue: 10,
         black: 15,
@@ -74,17 +112,18 @@ const mockGame = {
 
 const data = {
     games: [],
-    gameState: {
-        gameOwner: null, //player id,
-        gameId: null,
-        playerList: {}, // player object with playerId and player object
-        status: null,
-        name: null,
-        routes: {},
-        destinationCards: {},
-        trainCards: {},
-        faceUpTrainCards: {},
-    },
+    gameState: mockGame,
+    // {
+    //     gameOwner: null, //player id,
+    //     gameId: null,
+    //     playerList: {}, // player object with playerId and player object
+    //     status: null,
+    //     name: null,
+    //     routes: {},
+    //     destinationCards: {},
+    //     trainCards: {},
+    //     faceUpTrainCards: {},
+    // },
     authToken: null,
     clientId: null,
     gameId: '',
