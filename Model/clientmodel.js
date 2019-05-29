@@ -72,14 +72,16 @@ const mockGame = {
             endCity: "Los Angeles",
             pointValue: 5,
             playerId: "some-id",
-            completed: false
+            completed: false,
+            selected: false,
         },
         {
             startCity: "Salt Lake",
             endCity: "Provo",
             pointValue: 3,
             playerId: "some-id",
-            completed: false
+            completed: false,
+            selected: false,
         }  // destination card list
     ], // destination card objects
     trainCards: {
@@ -100,7 +102,7 @@ const mockGame = {
 
 const data = {
     games: [],
-    gameState: null,
+    gameState: mockGame,
     authToken: null,
     clientId: null,
     gameId: '',
