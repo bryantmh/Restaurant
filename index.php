@@ -29,6 +29,8 @@
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
 			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/google-map.html"));?>;
 			var destinationCardHTML = <?php echo json_encode(file_get_contents("./View/destination-card.html"));?>;
+			var chatHTML = <?php echo json_encode(file_get_contents("./View/chat.html"));?>;
+
 		</script>
 
 		<!-- Vue Packages -->
@@ -50,6 +52,7 @@
 		<script src="./Presenter/myinfo.js"></script>
 		<script src="./Presenter/google-map.js"></script>
 		<script src="./Presenter/destination-card.js"></script>
+		<script src="./Presenter/chat.js"></script>
 		<script src="./index.js"></script>
 		
 	</body>
