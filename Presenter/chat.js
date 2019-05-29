@@ -10,21 +10,20 @@ const chat = Vue.component('chat', {
 
   methods: {
     sendMessage(myMessage) {
-      // console.log(this.gameState.playerList[this.clientId].screenName)
       var dataOut = {
         senderId: data.clientId,
-        data: {
+        data: JSON.stringify({
           ChatMessage: {
             playerScreenName: this.gameState.players[this.clientId].screenName,
             message: myMessage,
           }
-        },
+        }),
         recipientId: null,
         gameId: this.gameState.gameId,
         command: 'NewChatMessage',
       };
 
-      console.log(dataOut)
+      // console.log(dataOut)
       this.serverProxy.commandHandler(JSON.stringify(dataOut));
     }
   },

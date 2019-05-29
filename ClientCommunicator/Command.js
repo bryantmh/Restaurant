@@ -89,9 +89,9 @@ class Command {
 
 	ChatResponse(params) {
 		var retVal = JSON.parse(params.data); // ChatMessage (screenName, message)
-		console.log("Chat response!");
-		console.log(retVal);
-		data.gameState.chat.push(retVal);
+		// console.log("Chat response!");
+		// console.log(retVal);
+		data.chat.push(retVal);
 	}
 
 	Error(params) {

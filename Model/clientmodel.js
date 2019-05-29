@@ -109,6 +109,6 @@ const data = {
     gamename: null,
     serverProxy: null,
     trainCardsLength: 0,
-    // destinationCardsLength: 0,
+    chat: [],
 };
 
