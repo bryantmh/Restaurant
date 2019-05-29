@@ -78,9 +78,9 @@ class Command {
 		var retVal = JSON.parse(params.data);
 		var playerId = retVal.playerId;
 		var card = retVal.cardToDiscard;
-		for (index in data.gameState.players[playerId].cardBank.destinationCards) {
-			if (data.gameState.players[playerId].cardBank.destinationCards[index].id == card.id) {
-				data.gameState.players[playerId].cardBank.destinationCards.splice(index, 1);
+		for (var i = 0; i < data.gameState.players[playerId].cardBank.destinationCards.length; i++) {
+			if (data.gameState.players[playerId].cardBank.destinationCards[i].id == card.id) {
+				data.gameState.players[playerId].cardBank.destinationCards.splice(i, 1);
 			}
 		}
 		data.gameState.cardBank.faceDownDestinationCards.push(card);
