@@ -10,7 +10,7 @@ const myinfo = Vue.component('myinfo', {
 
   	methods: {
     	viewDestinationCards() {
-      		// Not yet implemented
+        $('#viewDestModal').show();
     	},
   	},
 

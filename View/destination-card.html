@@ -3,19 +3,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Discard Destination Cards</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
-       <div class="card" v-for="card in $parent.gameState.players[$parent.clientId].cardBank.destinationCards">
-        <div class="container" :id="'card' + card['id']" @click="selectCard(card); ">
+       <div class="card" v-for="card in $parent.gameState.players[$parent.clientId].cardBank.destinationCards" style="cursor: pointer;">
+        <div class="container" :id="'card' + card['id']" @click="selectCard(card)">
           <h5>{{card.startCity}} to {{card.endCity}}</h5> 
           <p>Points: {{card.pointValue}}</p> 
         </div>
       </div>
     </div>
     <div class="modal-footer">
+      <button class="btn btn-primary">Keep All Cards</button>
       <button class="btn btn-primary" @click="discardCards()">Discard Selected</button>
     </div>
   </div>

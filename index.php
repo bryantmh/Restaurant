@@ -29,6 +29,7 @@
 			var myinfoHTML = <?php echo json_encode(file_get_contents("./View/myinfo.html"));?>;
 			var googlemapHTML = <?php echo json_encode(file_get_contents("./View/google-map.html"));?>;
 			var destinationCardHTML = <?php echo json_encode(file_get_contents("./View/destination-card.html"));?>;
+			var viewDestinationCardsHTML = <?php echo json_encode(file_get_contents("./View/viewDestinationCards.html"));?>;
 		</script>
 
 		<!-- Vue Packages -->
@@ -47,6 +48,7 @@
 		<script src="./Presenter/login.js"></script>
 		<script src="./Presenter/bank.js"></script>
 		<script src="./Presenter/playerlist.js"></script>
+		<script src="./Presenter/viewDestinationCards.js"></script>
 		<script src="./Presenter/myinfo.js"></script>
 		<script src="./Presenter/google-map.js"></script>
 		<script src="./Presenter/destination-card.js"></script>

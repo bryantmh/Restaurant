@@ -1,0 +1,20 @@
+<div class="modal" tabindex="-1" role="dialog" id="viewDestModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">My Destination Cards</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="card" v-for="card in gameState.players[clientId].cardBank.destinationCards">
+        <div class="container">
+          <h5>{{card.startCity}} to {{card.endCity}}</h5> 
+          <p>Points: {{card.pointValue}}</p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

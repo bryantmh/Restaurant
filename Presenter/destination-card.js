@@ -3,7 +3,7 @@
 /////////////////////////////////////
 
 const destinationCardData = {
-    selected: []
+    selected: null
 };
 
 
@@ -18,16 +18,14 @@ const destinationCard = Vue.component('destinationCard', {
     methods: {
 
         selectCard(card) {
-            // Make it so only 1 can be selected
-            if (this.selected.length < 1) {
-                this.selected.push(card);
-                $('#card' + card['id']).addClass('disabled');
+            if (this.selected == null) {
+                this.selected = card;
+                $('#card' + card['id']).addClass('disableCard');
             }
             else {
-                $('#card' + this.selected[0].id).removeClass('disabled');
-                this.selected = [];
-                this.selected.push(card);
-                $('#card' + card['id']).addClass('disabled');
+                $('#card' + this.selected.id).removeClass('disableCard');
+                this.selected = card;
+                $('#card' + card['id']).addClass('disableCard');
             }
         },
 
@@ -36,7 +34,7 @@ const destinationCard = Vue.component('destinationCard', {
                 senderId: data.clientId,
                 data: this.selected,
                 gameId: data.gameState.gameId,
-                command: 'DiscardCards',
+                command: 'DiscardDestinationCard',
             };
             data.serverProxy.commandHandler(JSON.stringify(dataOut));
             $('#discardGameBeginning').hide();
