@@ -102,7 +102,7 @@ const mockGame = {
 
 const data = {
     games: [],
-    gameState: mockGame,
+    gameState: null,
     authToken: null,
     clientId: null,
     gameId: '',
