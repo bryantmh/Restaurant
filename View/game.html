@@ -1,5 +1,5 @@
 <div role="main">
-	<div class="page-content" v-if="gameState.status != 'started'">
+	<div class="page-content" v-if="gameState.status != 'Started'">
 		<div id="content">
 			<div id="errorMessage" v-if="message" class="alert alert-warning" role="alert">{{message}}</div>
 	  		<h1>Waiting for game to start...</h1>
@@ -14,5 +14,6 @@
 		<google-map></google-map>
 		<bank></bank>
 		<myinfo></myinfo>
+		<destination-card id="discardGameBeginning"></destination-card>
 	</div>
 </div>

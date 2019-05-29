@@ -1,9 +1,15 @@
 <div style="width: 10%; height: 80%; background-color: rgba(41, 41, 41, 0.816); text-align: center; margin-right: 90%; color:white; padding:5px; position: absolute;">
 
     <p style="margin-bottom: 20px">Players in {{gameState.name}}:</p>
-	<div class="" v-for="(player, playerId, index) in gameState.playerList">
-         <span v-bind:style="getColor(player)"> {{player.screenName}}: {{player.score}}  <span v-if="playerId == gameState.nextPlayer">&larr;</span></span>
+	<div class="" v-for="(player, playerId, index) in gameState.players">
+        <span v-bind:style="getColor(player)"> 
+        	<h3>{{player.screenName}}</h3>
+        	<div>Score: {{player.score}}</div>
+        	<div>Train Cards: {{cardsLeft(playerId)}}</div>
+        	<div>Destination Cards: {{gameState.players[playerId].cardBank.destinationCards.length}}</div>
+        	<div>Trains Remaining: {{gameState.players[playerId].trainCarsRemaining}}</div>
+         	<!-- <div v-if="playerId == gameState.nextPlayer">&larr;</div> -->
+     	</span>
     </div>
 
 </div>
-

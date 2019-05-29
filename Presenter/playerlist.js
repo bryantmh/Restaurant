@@ -12,15 +12,17 @@ const playerlist = Vue.component('playerlist', {
 
         getColor(player) {
             return "color:" + player.color;
+        },
+
+        cardsLeft(playerID) {
+            var counter = 0;
+            for (var cardTypes in this.gameState.players[playerID].cardBank) {
+                if (cardTypes != 'destinationCards') {
+                    counter += this.gameState.players[playerID].cardBank[cardTypes].length;
+                }
+            }
+            return counter;
         }
-    },
-
-   watch: {
-      
-    },
-    
-    mounted() {
-
     },
 
 });

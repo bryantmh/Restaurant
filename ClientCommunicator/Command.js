@@ -55,7 +55,8 @@ class Command {
 	}
 
 	StartGameSuccess (params) {
-		app.$set(data.gameState, 'status', "started");
+		var retVal = JSON.parse(params.data);
+		data.gameState = JSON.parse(retVal.gameState);
 	}
 
 	PlayerJoinedGame(params)  {

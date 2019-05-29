@@ -1,36 +1,46 @@
-////////////////////
+/////////////////////////////////////
 // DestinationCard Modal Component //
-////////////////////
+/////////////////////////////////////
+
+const destinationCardData = {
+    selected: []
+};
+
+
+
 const destinationCard = Vue.component('destinationCard', {
     template: destinationCardHTML,
 
     data() {
-        return data;
+        return destinationCardData;
     },
 
     methods: {
 
         selectCard(card) {
-            card.selected ? (card.selected = false): (card.selected = true);  
+            // Make it so only 1 can be selected
+            if (this.selected.length < 1) {
+                this.selected.push(card);
+                $('#card' + card['id']).addClass('disabled');
+            }
+            else {
+                $('#card' + this.selected[0].id).removeClass('disabled');
+                this.selected = [];
+                this.selected.push(card);
+                $('#card' + card['id']).addClass('disabled');
+            }
         },
 
-        discardCards(cards) {
+        discardCards() {
             var dataOut = {
-                senderId: this.clientId,
-                data: cards,
-                gameId: this.gameState.gameId,
-                command: '', // Not Yet Implemented
-              };
-              this.serverProxy.commandHandler(JSON.stringify(dataOut));
+                senderId: data.clientId,
+                data: this.selected,
+                gameId: data.gameState.gameId,
+                command: 'DiscardCards',
+            };
+            data.serverProxy.commandHandler(JSON.stringify(dataOut));
+            $('#discardGameBeginning').hide();
         }
-    },
-
-   watch: {
-      
-    },
-    
-    mounted() {
-
     },
 
 });
