@@ -73,6 +73,10 @@ class Command {
                             
 	}
 
+	DrawDestinationCardsResponse(params) {
+
+	}
+
 	Error(params) {
 		var retVal = JSON.parse(params.data)
 		data.message = retVal.message
