@@ -32,7 +32,7 @@ const destinationCard = Vue.component('destinationCard', {
         discardCards() {
             var dataOut = {
                 senderId: data.clientId,
-                data: this.selected,
+                data: JSON.stringify({cardToDiscard: this.selected}),
                 gameId: data.gameState.gameId,
                 command: 'DiscardDestinationCard',
             };

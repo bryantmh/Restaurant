@@ -65,17 +65,25 @@ class Command {
 
         for (var i = 0; i < data.games.length; i++) {
             if (data.games[i].gameId == gameid) {
-                app.$set(data.games[i].playerList, retVal['player']['playerId'], retVal['player']);
+                app.$set(data.games[i].players, retVal['player']['playerId'], retVal['player']);
             }
         }
         if (data.gameState.gameId == gameid) {
-            app.$set(data.gameState.playerList, retVal['player']['playerId'], retVal['player']);
+            app.$set(data.gameState.players, retVal['player']['playerId'], retVal['player']);
         }
                             
 	}
 
-	DrawDestinationCardsResponse(params) {
-
+	DiscardDestinationCardSuccess(params) {
+		var retVal = JSON.parse(params.data);
+		var playerId = retVal.playerId;
+		var card = retVal.cardToDiscard;
+		for (index in data.gameState.players[playerId].cardBank.destinationCards) {
+			if (data.gameState.players[playerId].cardBank.destinationCards[index].id == card.id) {
+				data.gameState.players[playerId].cardBank.destinationCards.splice(index, 1);
+			}
+		}
+		data.gameState.cardBank.faceDownDestinationCards.push(card);
 	}
 
 	Error(params) {
