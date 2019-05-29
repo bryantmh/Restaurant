@@ -93,7 +93,7 @@ const googlemap = Vue.component('google-map', {
               item.path.setOptions( {
                 strokeColor: data.gameState.players[data.clientId].color,
               });
-              console.log(this);
+              // console.log(this);
               item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
           });
       
