@@ -29,18 +29,6 @@ const mockPlayer1 = {
             }  // destination card list
         ], // destination card objects
     },
-    // trainCards: {
-    //     blue: [id,id,id],
-    //     black: 4,
-    //     brown: 2,
-    //     green: 7,
-    //     purple: 3,
-    //     red: 4,
-    //     white: 2,
-    //     yellow: 7,
-    //     wild: 2
-    // },
-    // destinationCards: [],
     trainCarsRemaining: 40,
     score: 25,
     routesClaimed: []
@@ -112,18 +100,7 @@ const mockGame = {
 
 const data = {
     games: [],
-    gameState: mockGame,
-    // {
-    //     gameOwner: null, //player id,
-    //     gameId: null,
-    //     playerList: {}, // player object with playerId and player object
-    //     status: null,
-    //     name: null,
-    //     routes: {},
-    //     destinationCards: {},
-    //     trainCards: {},
-    //     faceUpTrainCards: {},
-    // },
+    gameState: null,
     authToken: null,
     clientId: null,
     gameId: '',
@@ -131,6 +108,6 @@ const data = {
     gamename: null,
     serverProxy: null,
     trainCardsLength: 0,
-    destinationCardsLength: 0,
+    // destinationCardsLength: 0,
 };
 
