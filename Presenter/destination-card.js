@@ -38,7 +38,7 @@ const destinationCard = Vue.component('destinationCard', {
             };
             data.serverProxy.commandHandler(JSON.stringify(dataOut));
             $('#discardGameBeginning').hide();
-        }
+        },
 
         discardNothing() {
             $('#discardGameBeginning').hide();
