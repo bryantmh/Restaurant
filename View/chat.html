@@ -1,12 +1,12 @@
 <div style="width: 20%; height: 20%; overflow: auto; background-color: rgba(41, 41, 41, 0.898); text-align: center; margin-left: 80%; margin-top: 80%; color:white; padding:5px; position: absolute;">
 
-    <div v-for="chat in data.gameState.chat">
+    <div v-for="chat in gameState.chat">
         <p style="font-size: 10px; margin: 0px; text-align:left">{{chat.screenName}} : {{chat.message}}</p>
     </div>
 
     <form class="login-form" action="" style="margin-top:5px">
         <div class="form-group">
-            <input type="text" class="form-control form-control-sm" placeholder="message" id="chatMessage" v-model="this.chatMessage">
+            <input type="text" class="form-control form-control-sm" placeholder="message" id="chatMessage" v-model="chatMessage">
             <button type="button" class="btn btn-primary btn-sm" @click="sendMessage(chatMessage)">Send</button>
         </div>
     </form>

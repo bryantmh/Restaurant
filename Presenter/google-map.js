@@ -83,12 +83,18 @@ const googlemap = Vue.component('google-map', {
           item.path = path;
           item.path.setMap(map);
           item.waypointmarker.setMap(map);
-          
-          item.waypointmarker.addListener('click', function(){              
+          item.path.addListener('click', function(){              
               item.path.setOptions( {
-                strokeColor: data.gameState.playerList[data.clientId].color,
+                strokeColor: data.gameState.players[data.clientId].color,
               });
-              this.setLabel(data.gameState.playerList[data.clientId].screenName);
+              item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
+          });
+          item.waypointmarker.addListener('click', function(){
+              item.path.setOptions( {
+                strokeColor: data.gameState.players[data.clientId].color,
+              });
+              console.log(this);
+              item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
           });
       
         });

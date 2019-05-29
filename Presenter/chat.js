@@ -1,30 +1,26 @@
 ////////////////////
 // Chat Component //
 ////////////////////
-
-const chatData = {
-  chatMessage: "",
-};
-
 const chat = Vue.component('chat', {
   template: chatHTML,
 
   data() {
-    return chatData;
+    return data;
   },
 
   methods: {
     sendMessage(myMessage) {
+      // console.log(this.gameState.playerList[this.clientId].screenName)
       var dataOut = {
         senderId: data.clientId,
         data: {
           ChatMessage: {
-            playerScreenName: data.gameState.playerList[data.clientId].screenName,
+            playerScreenName: this.gameState.players[this.clientId].screenName,
             message: myMessage,
           }
         },
         recipientId: null,
-        gameId: data.gameState.gameId,
+        gameId: this.gameState.gameId,
         command: 'NewChatMessage',
       };
 

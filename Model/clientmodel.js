@@ -65,32 +65,6 @@
 //     nextPlayer: 37,
 //     status: 'started',
 //     name: "Cool Game",
-//     chat: [
-//         {
-//             screenName: "my name",
-//             message: "message",
-//         },
-//         {
-//             screenName: "my name2",
-//             message: "message2",
-//         },
-//         {
-//             screenName: "my name",
-//             message: "message",
-//         },
-//         {
-//             screenName: "my name2",
-//             message: "message2",
-//         },
-//         {
-//             screenName: "my name",
-//             message: "message",
-//         },
-//         {
-//             screenName: "my name2",
-//             message: "message2",
-//         },
-//     ],
 //     routes: {},
 //     destinationCards: [
 //         {
@@ -124,8 +98,6 @@
 //     faceUpTrainCards: {0: "blue", 1: "red", 2: "green", 3: "purple", 4: "black"},
 // }
 
-
-
 const data = {
     games: [],
     gameState: null,
@@ -133,6 +105,7 @@ const data = {
     clientId: null,
     gameId: '',
     message: null,
+    chatMessage: null,
     gamename: null,
     serverProxy: null,
     trainCardsLength: 0,
