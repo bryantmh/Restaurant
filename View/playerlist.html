@@ -2,12 +2,11 @@
 
     <p style="margin-bottom: 20px">Players in {{gameState.name}}:</p>
 	<div class="" v-for="(player, playerId, index) in gameState.players" v-bind:style="getColor(player)">
-    	<h5 style="margin-bottom: .5em; margin-top: .1em;">{{player.screenName}}</h5>
+    	<h5 style="margin-top: .5em; margin-bottom: .1em;">{{player.screenName}}<span v-if="playerId == gameState.currentPlayer">&larr;</span></h5>
     	<div style="font-size: .5em;">Score: {{player.score}}</div>
     	<div style="font-size: .5em;">Train Cards: {{cardsLeft(playerId)}}</div>
     	<div style="font-size: .5em;">Destination Cards: {{gameState.players[playerId].cardBank.destinationCards.length}}</div>
     	<div style="font-size: .5em;">Trains Remaining: {{gameState.players[playerId].trainCarsRemaining}}</div>
-     	<!-- <div v-if="playerId == gameState.nextPlayer">&larr;</div> -->
     </div>
 
 </div>

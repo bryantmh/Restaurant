@@ -32,11 +32,15 @@ const destinationCard = Vue.component('destinationCard', {
         discardCards() {
             var dataOut = {
                 senderId: data.clientId,
-                data: JSON.stringify({cardToDiscard: this.selected}),
+                data: JSON.stringify({'cardToDiscard': this.selected.id}),
                 gameId: data.gameState.gameId,
                 command: 'DiscardDestinationCard',
             };
             data.serverProxy.commandHandler(JSON.stringify(dataOut));
+            $('#discardGameBeginning').hide();
+        }
+
+        discardNothing() {
             $('#discardGameBeginning').hide();
         }
     },
