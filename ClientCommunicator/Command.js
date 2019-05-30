@@ -96,7 +96,7 @@ class Command {
 
 	Error(params) {
 		var retVal = JSON.parse(params.data)
-		data.message = retVal.ChatMessage.message
+		data.message = retVal.message
 	}
 
 }
