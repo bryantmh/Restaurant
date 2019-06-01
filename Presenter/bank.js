@@ -15,7 +15,7 @@ const bank = Vue.component('bank', {
     	},
 
         drawTrainCardFromFaceup(index) {
-            var messageData = JSON.stringify({cardDrawnIndex: index});
+            var messageData = JSON.stringify({'cardDrawnIndex': index});
             var message = new Message('DrawTrainCardFromFaceUp', messageData, this.clientId, this.gameState.gameId).toString();
             this.serverProxy.commandHandler(message);
         },

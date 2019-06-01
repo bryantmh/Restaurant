@@ -1,13 +1,13 @@
 <div style="width: 10%; height: 80%; background-color: rgba(41, 41, 41, 0.816); text-align: center; position: absolute; left: 90%;">
-	<div class="card cardCursor" @click="drawDestinationCards()">
+	<div class="card cardCursor cardBankHigh" @click="drawDestinationCards()">
 		<span>{{Object.keys(gameState.cardBank.faceDownDestinationCards).length}} Left</span>
-		<img class="card-img" src="./View/img/destinationCard.jpg">
+		<img class="card-img imgBankHigh" src="./View/img/destinationCard.jpg">
 	</div>
-	<div class="card cardCursor" v-for="(faceUpCard, index) in gameState.cardBank.faceUpTrainCards" @click="drawTrainCardFromFaceup(index)">
-  		<img class="card-img" :src="'./View/img/' + gameState.cardBank.trainCards[faceUpCard].color + 'Train.jpg'">
+	<div class="card cardCursor cardBank" v-for="(faceUpCard, index) in gameState.cardBank.faceUpTrainCards" @click="drawTrainCardFromFaceup(index)">
+  		<img class="card-img imgBank" :src="'./View/img/' + gameState.cardBank.trainCards[faceUpCard].color + 'Train.jpg'">
   	</div>
-  	<div class="card cardCursor" @click="drawTrainCardFromDeck()">
+  	<div class="card cardCursor cardBankHigh" @click="drawTrainCardFromDeck()">
   		<span>{{Object.keys(gameState.cardBank.faceDownTrainCards).length}} Left</span>
-		<img class="card-img" src="./View/img/trainCardBack.jpg">
+		<img class="card-img imgBankHigh" src="./View/img/trainCardBack.jpg">
 	</div>
 </div>

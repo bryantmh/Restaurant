@@ -1,16 +1,13 @@
-.page-content { margin: 0 auto; max-width: 1200px; width: 100%; padding: 16px; box-sizing: border-box; flex-grow: 1; flex: 1 0 auto;}
+.page-content {flex-grow: 1; flex: 1 0 auto;}
 .containing-element { display: flex; flex-direction: column;}
 
 html, body { height: 100%;}
 
 #content {
-  position: relative;
-  z-index: 1;
   background: #FFFFFF;
-  max-width: 700px;
-  margin: 40% auto 100px;
+  margin: auto;
+  margin-top: 15%;
   padding: 60px;
-  padding-top: 30px;
   text-align: center;
   border-radius: 15px 15px 15px 15px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -32,6 +29,12 @@ html, body { height: 100%;}
   padding: 15px;
   box-sizing: border-box;
   font-size: 20px;
+}
+
+@media (min-width: 700px) {
+  #content {
+    width: 50%;
+  }
 }
 
 #content .message {
@@ -69,7 +72,45 @@ h1 {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   margin: 10px;
-  /*width: 40%;*/
+}
+
+.cardBank {
+  height: 12.5%;
+}
+
+.cardBankHigh {
+  height: 15%;
+}
+
+.imgBank {
+  max-width: 100%;
+  height: 100%;
+}
+
+.imgBankHigh {
+  height: 80%;
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .card-group>.card:last-child {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .card-group>.card:not(:first-child):not(:last-child):not(:only-child) {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .card-group>.card:first-child {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
 }
 
 .card:hover {

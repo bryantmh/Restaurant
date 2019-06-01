@@ -79,4 +79,29 @@ class Command {
 		data.gameState.currentPlayer = message.currentPlayer;
 	}
 
+	LastRound(message) {
+		alert("This is the final round! Choose your move wisely");
+	}
+
+	EndGame(message) {
+		alert("The game is over!");
+	}
+
+	UpdateFaceUpCard(message) {
+		var card = message.newCard;
+		data.gameState.cardBank.faceUpTrainCards[message.faceUpIndex] = card.id;
+		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(card.id);
+		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+	}
+
+	UpdateFaceUpCards(message) {
+		var cards = JSON.parse(message.newCards);
+		data.gameState.cardBank.faceUpTrainCards = [];
+		for (var index in cards) {
+			data.gameState.cardBank.faceUpTrainCards.push(cards[index].id);
+			var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(cards[index].id);
+			data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+		}
+	}
+
 }
