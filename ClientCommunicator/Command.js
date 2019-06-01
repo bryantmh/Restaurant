@@ -57,9 +57,7 @@ class Command {
 	DiscardDestinationCardSuccess(message) {
 		var playerId = message.playerId;
 		var cards = message.cardsToDiscard;
-		console.log(cards);
 		for (var card in cards) {
-			console.log(card);
 			for (var i = 0; i < data.gameState.players[playerId].cardBank.destinationCards.length; i++) {
 				if (data.gameState.players[playerId].cardBank.destinationCards[i].id == cards[card].id) {
 					data.gameState.players[playerId].cardBank.destinationCards.splice(i, 1);
