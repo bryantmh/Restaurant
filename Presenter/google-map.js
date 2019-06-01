@@ -12,9 +12,19 @@ const googlemap = Vue.component('google-map', {
     },
 
     methods: {
-        claimRoute(){
-            return null;
+        claimRoute(itemid, owner, duplicate, duplicateid){
+          var messageData = JSON.stringify({'routeid': itemid, 'owner': owner, 'duplicate': duplicate, 'duplicateid': duplicateid});
+          var message = new Message('ClaimRoute', messageData, this.clientId, this.gameId).toString();
+      		this.serverProxy.commandHandler(message);
         },
+        claimRouteSuccess(itemid, owner){
+          var item = routes[itemid];
+          item.owner = owner;
+          item.path.setOptions({
+            strokeColor: data.gameState.players[data.clientId].color,
+          });
+          item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
+        }
     },
 
     mounted(){
@@ -84,10 +94,7 @@ const googlemap = Vue.component('google-map', {
           item.path.setMap(map);
           item.waypointmarker.setMap(map);
           item.path.addListener('click', function(){              
-              item.path.setOptions( {
-                strokeColor: data.gameState.players[data.clientId].color,
-              });
-              item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
+              
           });
           item.waypointmarker.addListener('click', function(){
               item.path.setOptions( {
@@ -156,11 +163,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.Vancouver,
-                    to: cities.Seattle,
+                    from: cities.Seattle,
+                    to: cities.Vancouver,
                     waypoint: {
                       lat: 48.2798,
                       lng: -123.7401
@@ -169,7 +177,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null,
                   },
                   {
                     from: cities.Seattle,
@@ -182,7 +191,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: true,
                   },
                   {
                     from: cities.Calgary,
@@ -195,7 +205,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Seattle,
@@ -208,11 +219,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.Seattle,
-                    to: cities.Portland,
+                    from: cities.Portland,
+                    to: cities.Seattle,
                     waypoint: {
                       lat: 46.6760,
                       lng: -123.5423
@@ -221,7 +233,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Portland,
@@ -234,7 +247,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: true
                   },
                   {
                     from: cities.Portland,
@@ -247,11 +261,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.Portland,
-                    to: cities.SanFrancisco,
+                    from: cities.SanFrancisco,
+                    to: cities.Portland,
                     waypoint: {
                       lat: 41.75106,
                       lng: -123.60824
@@ -260,7 +275,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SanFrancisco,
@@ -273,11 +289,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: true
                   },
                   {
-                    from: cities.SanFrancisco,
-                    to: cities.SaltLake,
+                    from: cities.SaltLake,
+                    to: cities.SanFrancisco,
                     waypoint: {
                       lat: 38.6815,
                       lng: -116.7748
@@ -286,7 +303,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaltLake,
@@ -299,11 +317,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.SanFrancisco,
-                    to: cities.LosAngeles,
+                    from: cities.LosAngeles,
+                    to: cities.SanFrancisco,
                     waypoint: {
                       lat: 36.4878,
                       lng: -119.2357
@@ -312,7 +331,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LosAngeles,
@@ -325,7 +345,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LosAngeles,
@@ -338,7 +359,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Phoenix,
@@ -351,7 +373,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LosAngeles,
@@ -364,7 +387,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LasVegas,
@@ -377,7 +401,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Phoenix,
@@ -390,7 +415,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Phoenix,
@@ -403,7 +429,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Denver,
@@ -416,11 +443,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.Denver,
-                    to: cities.SaltLake,
+                    from: cities.SaltLake,
+                    to: cities.Denver,
                     waypoint: {
                       lat: 40.72669,
                       lng: -108.183441
@@ -429,7 +457,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaltLake,
@@ -442,7 +471,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Denver,
@@ -455,7 +485,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Denver,
@@ -468,11 +499,12 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
-                    from: cities.Denver,
-                    to: cities.KansasCity,
+                    from: cities.KansasCity,
+                    to: cities.Denver,
                     waypoint: {
                       lat: 39.93947,
                       lng: -98.42758
@@ -481,7 +513,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.KansasCity,
@@ -494,7 +527,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Denver,
@@ -507,7 +541,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Denver,
@@ -520,7 +555,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SantaFe,
@@ -533,7 +569,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SantaFe,
@@ -546,7 +583,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.ElPaso,
@@ -559,7 +597,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.ElPaso,
@@ -572,7 +611,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.ElPaso,
@@ -585,7 +625,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.OklahomaCity,
@@ -598,7 +639,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Dallas,
@@ -611,7 +653,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.OklahomaCity,
@@ -624,7 +667,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.OklahomaCity,
@@ -637,7 +681,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.KansasCity,
@@ -650,7 +695,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.KansasCity,
@@ -663,7 +709,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Omaha,
@@ -676,7 +723,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Houston,
@@ -689,7 +737,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Dallas,
@@ -702,7 +751,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Houston,
@@ -715,7 +765,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Omaha,
@@ -728,7 +779,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Omaha,
@@ -741,7 +793,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Omaha,
@@ -754,7 +807,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Duluth,
@@ -767,7 +821,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Calgary,
@@ -780,7 +835,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Calgary,
@@ -793,7 +849,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Winnipeg,
@@ -806,7 +863,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Winnipeg,
@@ -819,7 +877,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Winnipeg,
@@ -832,7 +891,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Duluth,
@@ -845,7 +905,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Duluth,
@@ -858,7 +919,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaultSte,
@@ -871,7 +933,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaultSte,
@@ -884,7 +947,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Chicago,
@@ -897,7 +961,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaintLouis,
@@ -910,7 +975,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Chicago,
@@ -923,7 +989,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Chicago,
@@ -936,7 +1003,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Pittsburgh,
@@ -949,7 +1017,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaintLouis,
@@ -962,7 +1031,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.KansasCity,
@@ -975,7 +1045,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaintLouis,
@@ -988,7 +1059,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaintLouis,
@@ -1001,7 +1073,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LittleRock,
@@ -1014,7 +1087,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.LittleRock,
@@ -1027,7 +1101,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewOrleans,
@@ -1040,7 +1115,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewOrleans,
@@ -1053,7 +1129,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Atlanta,
@@ -1066,7 +1143,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Miami,
@@ -1079,7 +1157,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Charleston,
@@ -1092,7 +1171,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Charleston,
@@ -1105,7 +1185,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Charleston,
@@ -1118,7 +1199,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Nashville,
@@ -1131,7 +1213,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Nashville,
@@ -1144,7 +1227,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Nashville,
@@ -1157,7 +1241,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Raleigh,
@@ -1170,7 +1255,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Raleigh,
@@ -1183,7 +1269,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Atlanta,
@@ -1196,7 +1283,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Raleigh,
@@ -1209,7 +1297,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Washington,
@@ -1222,7 +1311,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Raleigh,
@@ -1235,7 +1325,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Washington,
@@ -1248,7 +1339,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1261,7 +1353,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1274,7 +1367,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFFFF',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1287,7 +1381,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1300,7 +1395,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1313,7 +1409,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#FFFF00',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.NewYork,
@@ -1326,7 +1423,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#CC0000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Boston,
@@ -1339,7 +1437,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Boston,
@@ -1352,7 +1451,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Toronto,
@@ -1365,7 +1465,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Toronto,
@@ -1378,7 +1479,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Pittsburgh,
@@ -1391,7 +1493,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#006600',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.SaltLake,
@@ -1404,7 +1507,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#000099',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Duluth,
@@ -1417,7 +1521,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#ff8000',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                   {
                     from: cities.Duluth,
@@ -1430,7 +1535,8 @@ const googlemap = Vue.component('google-map', {
                     color: '#A0A0A0',
                     owner: '',
                     waypointMarker: null,
-                    path: null
+                    path: null,
+                    duplicate: null
                   },
                 ];
         }
