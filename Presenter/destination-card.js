@@ -6,8 +6,6 @@ const destinationCardData = {
     selected: null
 };
 
-
-
 const destinationCard = Vue.component('destinationCard', {
     template: destinationCardHTML,
 
@@ -16,7 +14,6 @@ const destinationCard = Vue.component('destinationCard', {
     },
 
     methods: {
-
         selectCard(card) {
             if (this.selected == null) {
                 this.selected = card;
@@ -30,13 +27,9 @@ const destinationCard = Vue.component('destinationCard', {
         },
 
         discardCards() {
-            var dataOut = {
-                senderId: data.clientId,
-                data: JSON.stringify({'cardToDiscard': this.selected.id}),
-                gameId: data.gameState.gameId,
-                command: 'DiscardDestinationCard',
-            };
-            data.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var messageData = JSON.stringify({'cardsToDiscard': [this.selected.id]});
+            var message = new Message('DiscardDestinationCard', messageData, data.clientId, data.gameState.gameId).toString();
+            data.serverProxy.commandHandler(message);
             $('#discardGameBeginning').hide();
         },
 

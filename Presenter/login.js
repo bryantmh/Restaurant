@@ -10,25 +10,15 @@ const login = Vue.component('login', {
 
     methods: {
   	    login(username, password) {
-            var dataOut = {
-                senderId: null,
-                command: 'Login',
-                data: JSON.stringify({'username': username, 'password': password}),
-                gameId: null,
-                recipientId: null
-            };
-            this.$parent.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var messageData = JSON.stringify({'username': username, 'password': password});
+            var message = new Message('Login', messageData, null, null).toString();
+            this.$parent.serverProxy.commandHandler(message);
         },
 
   	    register(username, password) {
-            var dataOut = {
-                senderId: '',
-                command: 'Register',
-                data: JSON.stringify({'username': username, 'password': password}),
-                gameId: '',
-                recipientId: ''
-             };
-            this.$parent.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var messageData = JSON.stringify({'username': username, 'password': password});
+            var message = new Message('Register', messageData, null, null).toString();
+            this.$parent.serverProxy.commandHandler(message);
         },
     },
 

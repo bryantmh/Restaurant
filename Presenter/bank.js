@@ -10,43 +10,20 @@ const bank = Vue.component('bank', {
 
   	methods: {
     	drawTrainCardFromDeck() {
-      		var dataOut = {
-        		senderId: this.clientId,
-        		data: null,
-        		recipientId: null,
-        		gameId: this.gameState.gameId,
-        		command: 'DrawTrainCardFromDeck',
-      		};
-      		this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var message = new Message('DrawTrainCardFromDeck', null, this.clientId, this.gameState.gameId).toString();
+          	this.serverProxy.commandHandler(message);
     	},
-      drawTrainCardFromFaceup(index) {
-          var dataOut = {
-            senderId: this.clientId,
-            data: null,
-            recipientId: null,
-            gameId: this.gameState.gameId,
-            command: '', // Not Yet Implemented
-          };
-          this.serverProxy.commandHandler(JSON.stringify(dataOut));
-      },
-      drawDestinationCards() {
-          var dataOut = {
-            senderId: this.clientId,
-            data: null,
-            recipientId: null,
-            gameId: this.gameState.gameId,
-            command: 'DrawDestinationCards',
-          };
-          this.serverProxy.commandHandler(JSON.stringify(dataOut));
-      },
+
+        drawTrainCardFromFaceup(index) {
+            var messageData = JSON.stringify({cardDrawnIndex: index});
+            var message = new Message('DrawTrainCardFromFaceUp', messageData, this.clientId, this.gameState.gameId).toString();
+            this.serverProxy.commandHandler(message);
+        },
+
+        drawDestinationCards() {
+            var message = new Message('DrawDestinationCards', null, this.clientId, this.gameState.gameId).toString()
+            this.serverProxy.commandHandler(message);
+        },
   	},
-
- 	watch: {
-    	
-  	},
-
-  mounted() {
-
-  },
 
 });

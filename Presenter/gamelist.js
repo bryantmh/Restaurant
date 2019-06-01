@@ -10,25 +10,15 @@ const gamelist = Vue.component('gamelist', {
 
     methods: {
         createGame(gamename) {
-            var dataOut = {
-                senderId: this.clientId,
-                command: 'CreateGame',
-                data: JSON.stringify({'name': gamename}),
-                gameId: null,
-                recipientId: null
-            };
-            this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var messageData = JSON.stringify({'name': gamename});
+            var message = new Message('CreateGame', messageData, this.clientId, null).toString();
+            this.serverProxy.commandHandler(message);
         },
 
         joinGame(gameId) {
-            var dataOut = {
-                senderId: this.clientId,
-                command: 'JoinGame',
-                data: JSON.stringify({'gameId': gameId}),
-                gameId: gameId,
-                recipientId: null
-            };
-            this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var messageData = JSON.stringify({'gameId': gameId});
+            var message = new Message('JoinGame', messageData, this.clientId, gameId).toString();
+            this.serverProxy.commandHandler(message);
         },
     },
 

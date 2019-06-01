@@ -10,14 +10,8 @@ const game = Vue.component('game', {
 
   	methods: {
     	startGame() {
-      		var dataOut = {
-        		senderId: this.clientId,
-        		data: null,
-        		recipientId: null,
-        		gameId: this.gameState.gameId,
-        		command: 'StartGame',
-      		};
-      		this.serverProxy.commandHandler(JSON.stringify(dataOut));
+            var message = new Message('StartGame', null, this.clientId, this.gameState.gameId).toString();
+      		this.serverProxy.commandHandler(message);
     	},
   	},
 
@@ -27,7 +21,7 @@ const game = Vue.component('game', {
     	},
   	},
 
-   mounted() {
+    mounted() {
     	if (this.gameState == null || this.gameState.gameId == null) {
        		this.$router.push({name: 'gamelist'});
     	}

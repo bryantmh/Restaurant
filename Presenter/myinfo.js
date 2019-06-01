@@ -14,11 +14,4 @@ const myinfo = Vue.component('myinfo', {
     	},
   	},
 
-   	watch: {
-
-    },
-
-    mounted() {
-      
-    },
 });

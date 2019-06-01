@@ -7,10 +7,10 @@ class ServerProxy {
 
 	socketRun() {
 	    this.socket.onmessage = (event) => {
-			var commandIn = JSON.parse(event.data);
-	        var newCommand = this.command.execute(commandIn);
-	        if (newCommand !== undefined) {
-	        	this.commandHandler(newCommand);
+			var message = JSON.parse(event.data);
+	        var newMessage = this.command.execute(message);
+	        if (newMessage !== undefined) {
+	        	this.commandHandler(newMessage);
 	        }
 	    }
 	}

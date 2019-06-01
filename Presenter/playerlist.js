@@ -9,7 +9,6 @@ const playerlist = Vue.component('playerlist', {
     },
 
     methods: {
-
         getColor(player) {
             return "color:" + player.color;
         },
