@@ -4,6 +4,10 @@ class Command {
 		data.message = null;
 		var commandMessage = JSON.parse(message.data);
 		commandMessage.recipientId = message.recipientId;
+		console.log("Message:");
+		console.log(message.data);
+		console.log("commandMessage:");
+		console.log(commandMessage);
 		return eval("this." + message.command)(commandMessage);
 	}
 

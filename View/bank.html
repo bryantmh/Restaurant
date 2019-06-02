@@ -3,9 +3,16 @@
 		<span>{{Object.keys(gameState.cardBank.faceDownDestinationCards).length}} Left</span>
 		<img class="card-img imgBankHigh" src="./View/img/destinationCard.jpg">
 	</div>
-	<div class="card cardCursor cardBank" v-for="(faceUpCard, index) in gameState.cardBank.faceUpTrainCards" @click="drawTrainCardFromFaceup(index)">
-  		<img class="card-img imgBank" :src="'./View/img/' + gameState.cardBank.trainCards[faceUpCard].color + 'Train.jpg'">
-  	</div>
+
+	<div class="card cardBank" v-for="(faceUpCard, index) in gameState.cardBank.faceUpTrainCards">
+		<div class="cardCursor" v-if="gameState.currentPlayer == gameState.players[clientId].playerId" @click="drawTrainCardFromFaceup(index)">
+			<img class="card-img imgBank" :src="'./View/img/' + gameState.cardBank.trainCards[faceUpCard].color + 'Train.jpg'">
+		</div>  
+		<div v-else>
+			<img class="card-img imgBank" :src="'./View/img/' + gameState.cardBank.trainCards[faceUpCard].color + 'Train.jpg'">
+		</div> 
+	  </div>
+	  
   	<div class="card cardCursor cardBankHigh" @click="drawTrainCardFromDeck()">
   		<span>{{Object.keys(gameState.cardBank.faceDownTrainCards).length}} Left</span>
 		<img class="card-img imgBankHigh" src="./View/img/trainCardBack.jpg">
