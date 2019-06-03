@@ -4,6 +4,7 @@ class Command {
 		data.message = null;
 		var commandMessage = JSON.parse(message.data);
 		commandMessage.recipientId = message.recipientId;
+		commandMessage.senderId = message.senderId;
 		return eval("this." + message.command)(commandMessage);
 	}
 
@@ -108,14 +109,35 @@ class Command {
 		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
 	}
 
-	UpdateFaceUpCards(message) {
-		var cards = JSON.parse(message.newCards);
-		data.gameState.cardBank.faceUpTrainCards = [];
-		for (var index in cards) {
-			data.gameState.cardBank.faceUpTrainCards.push(cards[index].id);
-			var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(cards[index].id);
-			data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+	// UpdateFaceUpCards(message) {
+	// 	var cards = JSON.parse(message.newCards);
+	// 	data.gameState.cardBank.faceUpTrainCards = [];
+	// 	for (var index in cards) {
+	// 		data.gameState.cardBank.faceUpTrainCards.push(cards[index].id);
+	// 		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(cards[index].id);
+	// 		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+	// 	}
+	// }
+
+	DrawTrainCardFromFaceUp(message) {
+
+	}
+
+	DrawTrainCardFromDeck(message) {
+
+	}
+
+	DrawDestinationCards(message) {
+		var playerId = message.senderId;
+		var cards = message.destinationCards;
+		console.log(playerId);
+		for (var card in cards) {
+			data.gameState.players[playerId].cardBank.destinationCards.push(cards[card]);
 		}
+		for (var card in cards) {
+			data.gameState.cardBank.destinationCards.push(cards[card]);
+		}
+		
 	}
 
 }

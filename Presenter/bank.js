@@ -21,6 +21,7 @@ const bank = Vue.component('bank', {
         },
 
         drawDestinationCards() {
+            console.log(this.clientId);
             var message = new Message('DrawDestinationCards', null, this.clientId, this.gameState.gameId).toString()
             this.serverProxy.commandHandler(message);
         },

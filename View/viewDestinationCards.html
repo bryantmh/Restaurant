@@ -9,6 +9,7 @@
       </div>
       <div class="modal-body">
        <div class="card" v-for="card in gameState.players[clientId].cardBank.destinationCards">
+        {{clientId}}
         <div class="container">
           <h5>{{card.startCity}} to {{card.endCity}}</h5> 
           <p>Points: {{card.pointValue}}</p> 
