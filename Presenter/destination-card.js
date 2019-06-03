@@ -3,7 +3,7 @@
 /////////////////////////////////////
 
 const destinationCardData = {
-    selected: null
+    selected: []
 };
 
 const destinationCard = Vue.component('destinationCard', {
@@ -15,15 +15,54 @@ const destinationCard = Vue.component('destinationCard', {
 
     methods: {
         selectCard(card) {
-            if (this.selected == null) {
-                this.selected = card;
-                $('#card' + card['id']).addClass('disableCard');
+            // if start game
+            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
+                if (this.selected.length == 0) {
+                    this.selected.push(card);
+                    $('#card' + card['id']).addClass('disableCard');
+                }
+                else {
+                    var tempCard = this.selected.pop();
+                    $('#card' + tempCard['id']).removeClass('disableCard');
+
+                    this.selected.push(card);
+                    $('#card' + card['id']).addClass('disableCard');
+                }
             }
+            // not start game
             else {
-                $('#card' + this.selected.id).removeClass('disableCard');
-                this.selected = card;
-                $('#card' + card['id']).addClass('disableCard');
+                console.log("In draw destination cards")
+                var index = getDestinationCardsIndex(card)
+                console.log("index=" + index)
+
+                // if card is already selected
+                if (index >= 0) {
+                    $('#card' + card['id']).removeClass('disableCard');
+                    this.selected.splice(i,1);
+                }
+                else if (this.selected.length < 2) {
+                    this.selected.push(card);
+                    $('#card' + card['id']).addClass('disableCard');
+                }
+                // too many cards selected
+                else {
+                    var tempCard = this.selected.pop();
+                    $('#card' + tempCard['id']).removeClass('disableCard');
+
+                    this.selected.push(card);
+                    $('#card' + card['id']).addClass('disableCard');
+                }
+
             }
+        },
+
+        destinationCardsContainsCard(card) {
+            for(var i = 0; i < this.selected.length; i++) {
+                if (this.selected[i] == card) {
+                    return i;
+                }
+           }
+           return -1;
         },
 
         discardCards() {
