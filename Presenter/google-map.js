@@ -12,19 +12,7 @@ const googlemap = Vue.component('google-map', {
     },
 
     methods: {
-        // claimRoute(itemid, duplicateid, duplicate, start, end, length, color, owner){
-        //     var messageData = JSON.stringify({'routeid': itemid, 'duplicateId': duplicateid,  'duplicate': duplicate, 'startCity': start, 'endCity': end, 'routeLength': length, 'color': color, 'owner': owner });
-        //     var message = new Message('ClaimRoute', messageData, this.clientId, this.gameId).toString();
-        //     this.serverProxy.commandHandler(message);
-        // },
-        // claimRouteSuccess(itemid, owner){
-        //   var item = routes[itemid];
-        //   item.owner = owner;
-        //   item.path.setOptions({
-        //     strokeColor: data.gameState.players[data.clientId].color,
-        //   });
-        //   item.waypointmarker.setLabel(data.gameState.players[data.clientId].screenName);
-        // }
+
     },
 
     mounted(){
@@ -98,8 +86,6 @@ const googlemap = Vue.component('google-map', {
             item.waypointmarker.setMap(map);
           }
           item.path.addListener('click', function(){
-            //this.claimRoute(index, item.duplicateid, item.duplicate, item.from.name, item.to.name, item.length, item.color, item.owner);
-            
             var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner });
             var message = new Message('ClaimRoute', messageData, data.clientId, data.gameState.gameId).toString();
             data.serverProxy.commandHandler(message);
