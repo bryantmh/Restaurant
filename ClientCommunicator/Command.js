@@ -19,6 +19,24 @@ class Command {
 		return new Message('GetGameList', null, message.clientId).toString();
 	}
 
+	ClaimRouteSuccess(message){
+		var itemid = message.routeId.toString();
+		var owner = message.owner;
+		var ownerid = message.ownerId;
+		console.log(message);
+		console.log(app.$children[0].$children[1].comproutes[itemid]);
+		console.log(app.$children[0].$children[1].comproutes.itemid);
+		var item = app.$children[0].$children[1].comproutes[itemid];
+		console.log(item);
+		var color = data.gameState.players[ownerid].color;
+		item.owner = owner;
+		item.path.setOptions({
+		  strokeColor: color,
+		});
+		data.gameState.players[ownerid].score += item.length;
+		item.waypointmarker.setLabel(owner);
+	}
+
 	GameListSuccess(message)  {
 		data.games = message.games;
 	}
