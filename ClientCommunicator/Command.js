@@ -69,6 +69,7 @@ class Command {
                             
 	}
 
+	// TODO: Bug where the counter is wrong
 	DiscardDestinationCardSuccess(message) {
 		var playerId = message.playerId;
 		var cards = message.cardsToDiscard;
@@ -102,15 +103,15 @@ class Command {
 		alert("The game is over!");
 	}
 
-	UpdateFaceUpCard(message) {
-		var card = message.newCard;
-		data.gameState.cardBank.faceUpTrainCards[message.faceUpIndex] = card.id;
-		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(card.id);
-		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
-	}
+	// UpdateFaceUpCard(message) {
+	// 	var card = message.newCard;
+	// 	data.gameState.cardBank.faceUpTrainCards[message.faceUpIndex] = card.id;
+	// 	var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(card.id);
+	// 	data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+	// }
 
 	// UpdateFaceUpCards(message) {
-	// 	var cards = JSON.parse(message.newCards);
+	// 	
 	// 	data.gameState.cardBank.faceUpTrainCards = [];
 	// 	for (var index in cards) {
 	// 		data.gameState.cardBank.faceUpTrainCards.push(cards[index].id);
@@ -119,23 +120,37 @@ class Command {
 	// 	}
 	// }
 
+	// DrawTrainCardFromDeck(message) {
+
+	// }
+
+
 	DrawTrainCardFromFaceUp(message) {
+		var newCard = message.newCard;
+		var oldCard = message.oldCard;
+		var playerId = message.playerId;
 
+		var faceUpIndex = message.faceUpIndex;
+		data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
+		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
+		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+
+		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
 	}
 
-	DrawTrainCardFromDeck(message) {
-
-	}
 
 	DrawDestinationCards(message) {
-		var playerId = message.senderId;
+		var playerId = message.recipientId;
 		var cards = message.destinationCards;
-		console.log(playerId);
+
 		for (var card in cards) {
 			data.gameState.players[playerId].cardBank.destinationCards.push(cards[card]);
 		}
 		for (var card in cards) {
-			data.gameState.cardBank.destinationCards.push(cards[card]);
+			data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
+		}
+		if (playerId == message.senderId) {
+			$('#discardGameBeginning').show();
 		}
 		
 	}

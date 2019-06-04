@@ -2,17 +2,17 @@
 // Bank Component //
 ////////////////////
 const bank = Vue.component('bank', {
-  	template: bankHTML,
+    template: bankHTML,
 
-  	data() {
-    	return data
-  	},
+    data() {
+        return data
+    },
 
-  	methods: {
-    	drawTrainCardFromDeck() {
+    methods: {
+        drawTrainCardFromDeck() {
             var message = new Message('DrawTrainCardFromDeck', null, this.clientId, this.gameState.gameId).toString();
-          	this.serverProxy.commandHandler(message);
-    	},
+            this.serverProxy.commandHandler(message);
+        },
 
         drawTrainCardFromFaceup(index) {
             var messageData = JSON.stringify({'cardDrawnIndex': index});
@@ -21,10 +21,9 @@ const bank = Vue.component('bank', {
         },
 
         drawDestinationCards() {
-            console.log(this.clientId);
             var message = new Message('DrawDestinationCards', null, this.clientId, this.gameState.gameId).toString()
             this.serverProxy.commandHandler(message);
         },
-  	},
+    },
 
 });
