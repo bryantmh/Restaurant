@@ -29,6 +29,7 @@ class Command {
 		var ownerid = message.ownerId;
 		var item = app.$children[0].$children[1].comproutes[itemid];
 		var color = data.gameState.players[ownerid].color;
+		data.gameState.players[ownerid].score += message.points;
 		item.owner = owner;
 		item.path.setOptions({
 		  strokeColor: color,
