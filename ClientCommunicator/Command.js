@@ -24,6 +24,7 @@ class Command {
 		var itemid = message.routeId.toString();
 		var discardedCards = message.discardedCards;
 		var rainbowCards = message.rainbowCards;
+		var cardColor = message.cardColor;
 		var owner = message.owner;
 		var ownerid = message.ownerId;
 		var item = app.$children[0].$children[1].comproutes[itemid];
@@ -32,8 +33,26 @@ class Command {
 		item.path.setOptions({
 		  strokeColor: color,
 		});
-		data.gameState.players[ownerid].score += item.length;
+		for(var x = 0; x < discardedCards.length; x++){
+			for (var i = 0; i < data.gameState.players[ownerid].cardBank[cardColor + "Cards"].length; i++) {
+				if(data.gameState.players[ownerid].cardBank[cardColor + "Cards"][i].id == x.id){
+					data.gameState.players[ownerid].cardBank[cardColor + "Cards"].splice(i, 1);
+					continue;
+				}
+			}
+		}
+		
+		for(var x = 0; x < rainbowCards.length; x++){
+			for(var i = 0; i < data.gameState.players[ownerid].cardBank["rainbowCards"].length; i++){
+				if(data.gameState.players[ownerid].cardBank["rainbowCards"][i].id == x.id){
+					data.gameState.players[ownerid].cardBank["rainbowCards"].splice(i, 1);
+					continue;
+				}			
+			}
+		}
+		
 		item.waypointmarker.setLabel(owner);
+
 	}
 
 	GameListSuccess(message)  {

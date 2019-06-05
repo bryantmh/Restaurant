@@ -16,7 +16,7 @@ const googlemap = Vue.component('google-map', {
     },
 
     mounted(){
-        var invalidColor = function (color){
+        var validColor = function (color){
           switch (color.toLowerCase()){
             case ("purple"):
                 return true;
@@ -137,14 +137,15 @@ const googlemap = Vue.component('google-map', {
             if(item.color == '#A0A0A0'){
               var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
               then your locomotive cards will be used!", "blue");
+              console.log(chooseCard);
               if(chooseCard == null || chooseCard == ""){
                 alert("No card color chosen!");
                 return;
-              } else if (invalidColor(chooseCard)){
+              } else if (validColor(chooseCard)){
+                cardColor = chooseCard.toLowerCase();
+              } else {
                 alert("Choose a valid color.");
                 return;
-              } else {
-                cardColor = chooseCard.toLowerCase();
               }
             }
             var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner, 'cardColor': cardColor });
