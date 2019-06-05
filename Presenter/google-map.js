@@ -158,9 +158,6 @@ const googlemap = Vue.component('google-map', {
     },
 
     computed:{
-        cities(){
-            return 
-        },
         comproutes(){
             cities =  {
                 Calgary: {name: 'Calgary', lat: 51.048615, lng: -114.070847, marker:null },
