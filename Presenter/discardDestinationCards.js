@@ -17,17 +17,21 @@ const destinationCard = Vue.component('destinationCard', {
         selectCard(card) {
             // if start game
             if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
+        
+                console.log("In start game")
+
                 if (this.selected.length == 0) {
                     this.selected.push(card['id']);
                     $('#card' + card['id']).addClass('disableCard');
                 }
                 else {
                     var tempCard = this.selected.pop();
-                    $('#card' + tempCard['id']).removeClass('disableCard');
+                    $('#card' + tempCard).removeClass('disableCard');
 
                     this.selected.push(card['id']);
                     $('#card' + card['id']).addClass('disableCard');
                 }
+                
             }
             // not start game
             else {

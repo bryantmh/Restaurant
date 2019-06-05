@@ -122,7 +122,7 @@ class Command {
 	}
 
 	EndGame(message) {
-		alert("The game is over!\n" + message.pointBreakdown);
+		alert("The game is over!\n");
 		var pointBreakdown = message.pointBreakdown;
 
 		var endGameData = [];
