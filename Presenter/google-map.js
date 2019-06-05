@@ -16,6 +16,31 @@ const googlemap = Vue.component('google-map', {
     },
 
     mounted(){
+        var invalidColor = function (color){
+          switch (color.toLowerCase()){
+            case ("purple"):
+                return true;
+            case ("white"):
+                return true;
+            case ("blue"):
+                return true;
+            case ("yellow"):
+                return true;
+            case ("orange"):
+                return true;
+            case ("black"):
+                return true;
+            case ("red"):
+                return true;
+            case ("green"):
+                return true;
+            case ("rainbow"):
+                return true;
+            default:
+              return false;
+          }
+        };
+
         var myLatlng = new google.maps.LatLng(39.381266, -97.922211);
         var mapOptions = {
 
@@ -86,16 +111,46 @@ const googlemap = Vue.component('google-map', {
             item.waypointmarker.setMap(map);
           }
           item.path.addListener('click', function(){
-            var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner });
+            var cardColor = '';
+            if(item.color == '#A0A0A0'){
+              var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
+              then your locomotive cards will be used!\
+              Locomotives are 'rainbow'.", "blue");
+              if(chooseCard == null || chooseCard == ""){
+                alert("No card color chosen!");
+                return;
+              } else if (invalidColor(chooseCard)){
+                alert("Choose a valid color.");
+                return;
+              } else {
+                cardColor = chooseCard.toLowerCase();
+              }
+            }
+            var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner, 'cardColor': cardColor });
             var message = new Message('ClaimRoute', messageData, data.clientId, data.gameState.gameId).toString();
             data.serverProxy.commandHandler(message);
             
           });
           item.waypointmarker.addListener('click', function(){
             // this.claimRoute(index, item.duplicateid, item.duplicate, item.from.name, item.to.name, item.length, item.color, item.owner);
-            var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner });
+            var cardColor = '';
+            if(item.color == '#A0A0A0'){
+              var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
+              then your locomotive cards will be used!", "blue");
+              if(chooseCard == null || chooseCard == ""){
+                alert("No card color chosen!");
+                return;
+              } else if (invalidColor(chooseCard)){
+                alert("Choose a valid color.");
+                return;
+              } else {
+                cardColor = chooseCard.toLowerCase();
+              }
+            }
+            var messageData = JSON.stringify({'routeId': item.index, 'duplicateId': item.duplicateid,  'duplicate': item.duplicate, 'startCity': item.to.name, 'endCity': item.from.name, 'routeLength': item.length, 'color': item.color, 'owner': item.owner, 'cardColor': cardColor });
             var message = new Message('ClaimRoute', messageData, data.clientId, data.gameState.gameId).toString();
             data.serverProxy.commandHandler(message);
+            
           });
       
         });
@@ -1690,7 +1745,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -111.9408
                     },
                     length: 3,
-                    color: '#000099',
+                    color: '#ff3399',
                     owner: '',
                     waypointMarker: null,
                     path: null,

@@ -21,6 +21,8 @@ class Command {
 
 	ClaimRouteSuccess(message){
 		var itemid = message.routeId.toString();
+		var discardedCards = message.discardedCards;
+		var rainbowCards = message.rainbowCards;
 		var owner = message.owner;
 		var ownerid = message.ownerId;
 		var item = app.$children[0].$children[1].comproutes[itemid];
