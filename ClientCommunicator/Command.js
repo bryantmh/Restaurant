@@ -103,26 +103,15 @@ class Command {
 		alert("The game is over!");
 	}
 
-	// UpdateFaceUpCard(message) {
-	// 	var card = message.newCard;
-	// 	data.gameState.cardBank.faceUpTrainCards[message.faceUpIndex] = card.id;
-	// 	var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(card.id);
-	// 	data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
-	// }
+	DrawTrainCardFromDeck(message) {
+		var card = message.card;
+		var playerId = message.playerId;
 
-	// UpdateFaceUpCards(message) {
-	// 	
-	// 	data.gameState.cardBank.faceUpTrainCards = [];
-	// 	for (var index in cards) {
-	// 		data.gameState.cardBank.faceUpTrainCards.push(cards[index].id);
-	// 		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(cards[index].id);
-	// 		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
-	// 	}
-	// }
+		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(card.id);
+		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
 
-	// DrawTrainCardFromDeck(message) {
-
-	// }
+		data.gameState.players[playerId].cardBank[card.color + "Cards"].push(card.id);
+	}
 
 
 	DrawTrainCardFromFaceUp(message) {
@@ -152,7 +141,6 @@ class Command {
 		if (playerId == message.senderId) {
 			$('#discardGameBeginning').show();
 		}
-		
 	}
 
 }
