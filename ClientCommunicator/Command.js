@@ -100,7 +100,22 @@ class Command {
 	}
 
 	EndGame(message) {
-		alert("The game is over!");
+		alert("The game is over!\n" + message.pointBreakdown);
+		var pointBreakdown = message.pointBreakdown;
+
+		var endGameData = [];
+		for (var player in pointBreakdown) {
+			endGameData.push({
+				playerScreenName: player,
+				routePoints: pointBreakdown[player][0],
+            	destinationCardPoints: pointBreakdown[player][1],
+            	destinationCardPointsLost: pointBreakdown[player][2],
+            	mostRoutesPoints: pointBreakdown[player][3]
+			})
+		}
+
+		data.gameState.push(endGameData);
+		$('#viewEndGameModal').show();
 	}
 
 	DrawTrainCardFromDeck(message) {
