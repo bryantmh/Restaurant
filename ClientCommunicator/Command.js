@@ -162,7 +162,14 @@ class Command {
 		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
 		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
 
-		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
+		// If drawn by a player
+		if (playerId != null) {
+			data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
+		}
+		// If the deck is just being reset
+		else {
+			data.gameState.cardBank.faceDownTrainCards.push(oldCard.id);
+		}
 	}
 
 
@@ -179,6 +186,10 @@ class Command {
 		if (playerId == message.senderId) {
 			$('#discardGameBeginning').show();
 		}
+	}
+
+	PlayerLeftGame(message) {
+		alert(data.gameState.players[message.playerId].screenName + " has left the game!");
 	}
 
 }
