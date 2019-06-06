@@ -162,14 +162,7 @@ class Command {
 		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
 		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
 
-		// If drawn by a player
-		if (playerId != null) {
-			data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
-		}
-		// If the deck is just being reset
-		else {
-			data.gameState.cardBank.faceDownTrainCards.push(oldCard.id);
-		}
+		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
 	}
 
 
@@ -190,6 +183,15 @@ class Command {
 
 	PlayerLeftGame(message) {
 		alert(data.gameState.players[message.playerId].screenName + " has left the game!");
+	}
+
+	ResetFaceUpCards(message) {
+		app.$set(data.gameState.cardBank, 'faceDownTrainCards', message.faceDown);
+		app.$set(data.gameState.cardBank, 'faceUpTrainCards', message.faceUp)
+	}
+
+	UpdateFaceDownDeck(message) {
+		app.$set(data.gameState.cardBank, 'faceDownTrainCards', message.faceDown);
 	}
 
 }
