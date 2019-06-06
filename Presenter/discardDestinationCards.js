@@ -68,9 +68,17 @@ const destinationCard = Vue.component('destinationCard', {
         },
 
         discardCards() {
-            var messageData = JSON.stringify({'cardsToDiscard': this.selected});
-            var message = new Message('DiscardDestinationCard', messageData, data.clientId, data.gameState.gameId).toString();
-            data.serverProxy.commandHandler(message);
+             // if first round
+            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
+                var messageData = JSON.stringify({'cardsToDiscard': this.selected});
+                var message = new Message('DiscardDestinationCardInitial', messageData, data.clientId, data.gameState.gameId).toString();
+                data.serverProxy.commandHandler(message);
+            } else {
+                var messageData = JSON.stringify({'cardsToDiscard': this.selected});
+                var message = new Message('DiscardDestinationCard', messageData, data.clientId, data.gameState.gameId).toString();
+                data.serverProxy.commandHandler(message);
+            }
+            
             for (var i = 0; i < this.selected.length; i++) {
                 $('#card' + this.selected[i]).removeClass('disableCard');
             }
