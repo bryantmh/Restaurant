@@ -27,7 +27,6 @@ const app = new Vue({
     router,
     
     mounted() {
-        this.serverProxy = new ServerProxy("ws://localhost:5001/"); //ws://10.37.41.216:8080/ticket-to-ride-back-end/
-        this.serverProxy.socketRun();
+        this.serverProxy = new ServerProxy("ws://jaredhammon.com:8080/ticket-to-ride-back-end/");
     },
 });
