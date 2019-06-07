@@ -183,7 +183,7 @@ class Command {
 		else {
 			for (var card in cards) {
 				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-				data.gameState.players[playerId].cardBank.destinationCards.push(cards[card]);
+				data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
 			}
 		}		
 	}
