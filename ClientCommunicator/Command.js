@@ -3,6 +3,7 @@ class Command {
 	execute(message) {
 		data.message = null;
 		var commandMessage = JSON.parse(message.data);
+		console.log(message.command);
 		commandMessage.recipientId = message.recipientId;
 		commandMessage.senderId = message.senderId;
 		return eval("this." + message.command)(commandMessage);
@@ -194,7 +195,8 @@ class Command {
 		app.$set(data.gameState.cardBank, 'faceUpTrainCards', message.faceUp)
 	}
 
-	UpdateFaceDownDeck(message) {
+	UpdateFaceDownCards(message) {
+		console.log(message)
 		app.$set(data.gameState.cardBank, 'faceDownTrainCards', message.faceDown);
 	}
 
