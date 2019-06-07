@@ -105,7 +105,7 @@ const googlemap = Vue.component('google-map', {
           item.waypointmarker = wpmarker;
           item.path = path;
           item.path.setMap(map);
-          if(Object.keys(data.gameState.players).length < 3 && item.duplicate && item.duplicateid == index - 1) {
+          if(Object.keys(data.gameState.players).length < 4 && item.duplicate && item.duplicateid == index - 1) {
             item.path.setMap(null);
           } else {
             item.waypointmarker.setMap(map);
