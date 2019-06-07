@@ -16,7 +16,7 @@ const gamelist = Vue.component('gamelist', {
         },
 
         joinGame(gameId) {
-            var messageData = JSON.stringify({'gameId': gameId});
+            var messageData = JSON.stringify({'gameId': gameId, 'screenName': inputName});
             var message = new Message('JoinGame', messageData, this.clientId, gameId).toString();
             this.serverProxy.commandHandler(message);
         },

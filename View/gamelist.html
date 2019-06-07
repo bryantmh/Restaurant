@@ -7,6 +7,7 @@
         <div class="card-body">
           <h2>{{game.name}}</h2>
           <p>{{Object.keys(game.players).length}} / 5</p>
+          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?" style="width: 50%; display: inline-block">
           <button type="button" class="btn btn-primary" @click="joinGame(game.gameId)">Join Game</button>
         </div>
       </div>
@@ -14,6 +15,7 @@
         <div class="card-body">
           <h2>{{game.name}}</h2>
           <p>{{Object.keys(game.players).length}} / 5</p>
+          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?" style="width: 50%; display: inline-block" disabled>
           <button type="button" class="btn btn-primary" disabled>Join Game</button>
         </div>
       </div>

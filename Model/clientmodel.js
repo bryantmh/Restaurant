@@ -13,5 +13,6 @@ const data = {
     gamename: null,
     serverProxy: null,
     chat: [],
+    inputName: null,
 };
 
