@@ -17,8 +17,6 @@ const destinationCard = Vue.component('destinationCard', {
         selectCard(card) {
             // if start game
             if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
-        
-                console.log("In start game")
 
                 if (this.selected.length == 0) {
                     this.selected.push(card['id']);

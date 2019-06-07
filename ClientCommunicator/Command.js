@@ -86,7 +86,7 @@ class Command {
                 app.$set(data.games[i].players, message['player']['playerId'], message['player']);
             }
         }
-        if (data.gameState.gameId == gameid) {
+        if (data.gameState != null && data.gameState.gameId == gameid) {
             app.$set(data.gameState.players, message['player']['playerId'], message['player']);
         }
                             
@@ -168,18 +168,20 @@ class Command {
 
 
 	DrawDestinationCards(message) {
+
 		var playerId = message.recipientId;
 		var cards = message.destinationCards;
+		var senderId = message.senderId;
 
-		for (var card in cards) {
-			data.gameState.players[playerId].cardBank.destinationCards.push(cards[card]);
+		if (playerId == senderId) {
+			$('#discardGameBeginning').show();
 		}
 		for (var card in cards) {
 			data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
+			data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
 		}
-		if (playerId == message.senderId) {
-			$('#discardGameBeginning').show();
-		}
+		
+		
 	}
 
 	PlayerLeftGame(message) {
