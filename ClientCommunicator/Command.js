@@ -112,7 +112,7 @@ class Command {
 
 	Error(message) {
 		console.log(message.message);
-		data.message = message.message
+		data.message = message.command
 	}
 
 	TurnChange(message) {
