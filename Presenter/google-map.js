@@ -85,7 +85,7 @@ const googlemap = Vue.component('google-map', {
             geodesic: true,
             strokeColor: item.color,
             strokeOpacity: 1.0,
-            strokeWeight: 8
+            strokeWeight: 5
           });
       
           var wplabel = item.owner;
@@ -319,7 +319,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -117.2142
                     },
                     length: 6,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -335,7 +335,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -123.60824
                     },
                     length: 5,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -399,7 +399,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -119.2357
                     },
                     length: 3,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -543,7 +543,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -108.183441
                     },
                     length: 3,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -591,7 +591,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -100.44907
                     },
                     length: 4,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -639,7 +639,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -101.24008
                     },
                     length: 4,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -671,7 +671,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -101.74545
                     },
                     length: 3,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -719,7 +719,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -101.591645
                     },
                     length: 4,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -911,7 +911,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -91.72592
                     },
                     length: 4,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -927,7 +927,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -103.9867
                     },
                     length: 5,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1007,7 +1007,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -104.5579
                     },
                     length: 4,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1055,7 +1055,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -89.792328
                     },
                     length: 3,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1071,7 +1071,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -85.68344
                     },
                     length: 6,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1199,7 +1199,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -92.297211
                     },
                     length: 2,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1215,7 +1215,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -92.297211
                     },
                     length: 2,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1295,7 +1295,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -85.17807
                     },
                     length: 6,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1343,7 +1343,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -82.27768
                     },
                     length: 5,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1359,7 +1359,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -80.058441
                     },
                     length: 4,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1615,7 +1615,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -73.7426178
                     },
                     length: 3,
-                    color: '#000099',
+                    color: '#4a92f7',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1647,7 +1647,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -71.950531
                     },
                     length: 2,
-                    color: '#CC0000',
+                    color: '#d33b3b',
                     owner: '',
                     waypointMarker: null,
                     path: null,
@@ -1743,7 +1743,7 @@ const googlemap = Vue.component('google-map', {
                       lng: -111.9408
                     },
                     length: 3,
-                    color: '#ff3399',
+                    color: '#c38afc',
                     owner: '',
                     waypointMarker: null,
                     path: null,

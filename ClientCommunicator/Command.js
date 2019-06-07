@@ -34,6 +34,7 @@ class Command {
 		item.owner = owner;
 		item.path.setOptions({
 		  strokeColor: color,
+		  strokeWeight: 8,
 		});
 		for(var x = 0; x < discardedCards.length; x++){
 			for (var i = 0; i < data.gameState.players[ownerid].cardBank[cardColor + "Cards"].length; i++) {
