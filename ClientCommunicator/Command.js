@@ -111,8 +111,8 @@ class Command {
 	}
 
 	Error(message) {
-		console.log(message.message);
-		data.message = message.command
+		console.log(message.stackTrace);
+		data.message = message.message
 	}
 
 	TurnChange(message) {
