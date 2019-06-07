@@ -172,13 +172,14 @@ class Command {
 		var playerId = message.recipientId;
 		var cards = message.destinationCards;
 		var senderId = message.senderId;
+		data.newDestinationCards = [];
 
 		if (playerId == senderId) {
 			$('#discardGameBeginning').show();
 		}
 		for (var card in cards) {
 			data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-			data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
+			data.newDestinationCards.push(cards[card]);
 		}
 		
 		

@@ -4,7 +4,15 @@
       <div class="modal-header">
         <h5 class="modal-title">Discard Destination Cards</h5>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" v-if="$parent.newDestinationCards != null">
+        <div class="card" v-for="card in $parent.newDestinationCards" style="cursor: pointer;">
+          <div class="container" :id="'card' + card['id']" @click="selectCard(card)">
+            <h5>{{card.startCity}} to {{card.endCity}}</h5> 
+            <p>Points: {{card.pointValue}}</p> 
+          </div>
+      </div>
+      </div>
+      <div class="modal-body" v-else="">
        <div class="card" v-for="card in $parent.gameState.players[$parent.clientId].cardBank.destinationCards" style="cursor: pointer;">
         <div class="container" :id="'card' + card['id']" @click="selectCard(card)">
           <h5>{{card.startCity}} to {{card.endCity}}</h5> 

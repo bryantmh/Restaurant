@@ -14,5 +14,6 @@ const data = {
     serverProxy: null,
     chat: [],
     inputName: null,
+    newDestinationCards: null,
 };
 

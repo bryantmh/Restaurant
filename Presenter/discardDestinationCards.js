@@ -80,6 +80,14 @@ const destinationCard = Vue.component('destinationCard', {
             for (var i = 0; i < this.selected.length; i++) {
                 $('#card' + this.selected[i]).removeClass('disableCard');
             }
+
+            if (data.newDestinationCards != null) {
+                for (var i = 0; i < data.newDestinationCards.length; i++) {
+                    if (!this.selected.includes(i)) {
+                        data.gameState.players[data.clientId].cardBank.destinationCards.push(data.newDestinationCards[i]);
+                    }
+                }
+            }
             this.selected = [];
             $('#discardGameBeginning').hide();
         },
