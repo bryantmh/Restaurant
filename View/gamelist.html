@@ -7,7 +7,7 @@
         <div class="card-body">
           <h2>{{game.name}}</h2>
           <p>{{Object.keys(game.players).length}} / 5</p>
-          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?" style="width: 50%; display: inline-block">
+          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?">
           <button type="button" class="btn btn-primary" @click="joinGame(game.gameId)">Join Game</button>
         </div>
       </div>
@@ -15,12 +15,14 @@
         <div class="card-body">
           <h2>{{game.name}}</h2>
           <p>{{Object.keys(game.players).length}} / 5</p>
-          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?" style="width: 50%; display: inline-block" disabled>
+          <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="What would you like your name to be?" disabled>
           <button type="button" class="btn btn-primary" disabled>Join Game</button>
         </div>
       </div>
     </div>
-    <input type="text" class="form-control" id="gamename" v-model="gamename" placeholder="Enter a name for your game" style="width: 50%; display: inline-block">
+    <br><br>
+    <input type="text" class="form-control" id="gamename" v-model="gamename" placeholder="Enter a name for your game">
+    <input type="text" class="form-control" id="inputName" v-model="inputName" placeholder="Enter a name for your player">
     <button type="button" class="btn btn-primary" @click="createGame(gamename)">Create New Game</button>
   </div>
 </div>
