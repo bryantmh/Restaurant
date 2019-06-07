@@ -168,21 +168,24 @@ class Command {
 
 
 	DrawDestinationCards(message) {
-
 		var playerId = message.recipientId;
 		var cards = message.destinationCards;
 		var senderId = message.senderId;
 		data.newDestinationCards = [];
 
 		if (playerId == senderId) {
+			for (var card in cards) {
+				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
+				data.newDestinationCards.push(cards[card]);
+			}
 			$('#discardGameBeginning').show();
 		}
-		for (var card in cards) {
-			data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-			data.newDestinationCards.push(cards[card]);
-		}
-		
-		
+		else {
+			for (var card in cards) {
+				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
+				data.gameState.players[playerId].cardBank.destinationCards.push(cards[card]);
+			}
+		}		
 	}
 
 	PlayerLeftGame(message) {
