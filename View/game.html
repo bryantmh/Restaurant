@@ -10,7 +10,7 @@
 	  	</div> 	
 	</div>
 	<div v-else="">
-		<div id="errorMessage" v-if="message" class="alert alert-warning" role="alert">{{message}}</div>
+		<div id="errorMessage" v-if="message" class="alert alert-warning" role="alert" style="position: absolute; z-index: 1000; width: 100%;">{{message}}</div>
 		<playerlist></playerlist>
 		<google-map></google-map>
 		<bank></bank>
