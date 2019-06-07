@@ -10,7 +10,7 @@ const gamelist = Vue.component('gamelist', {
 
     methods: {
         createGame(gamename) {
-            var messageData = JSON.stringify({'name': gamename});
+            var messageData = JSON.stringify({'name': gamename, 'screenName': this.inputName});
             var message = new Message('CreateGame', messageData, this.clientId, null).toString();
             this.serverProxy.commandHandler(message);
         },
