@@ -43,7 +43,7 @@ const googlemap = Vue.component('google-map', {
 
         var myLatlng = new google.maps.LatLng(39.381266, -97.922211);
         var mapOptions = {
-
+          streetViewControl: false,
           zoom: 4,
           center: myLatlng
         }
@@ -115,7 +115,8 @@ const googlemap = Vue.component('google-map', {
             if(item.color == '#A0A0A0'){
               var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
               then your locomotive cards will be used!\
-              Locomotives are 'rainbow'.", "blue");
+              Valid colors: purple, white, blue, yellow, orange, black, red, green, rainbow\
+              Locomotives are 'rainbow'.", "");
               if(chooseCard == null || chooseCard == ""){
                 alert("No card color chosen!");
                 return;
@@ -130,13 +131,15 @@ const googlemap = Vue.component('google-map', {
             var message = new Message('ClaimRoute', messageData, data.clientId, data.gameState.gameId).toString();
             data.serverProxy.commandHandler(message);
             
-          });
+          });            
           item.waypointmarker.addListener('click', function(){
             // this.claimRoute(index, item.duplicateid, item.duplicate, item.from.name, item.to.name, item.length, item.color, item.owner);
             var cardColor = '';
             if(item.color == '#A0A0A0'){
               var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
-              then your locomotive cards will be used!", "blue");
+              then your locomotive cards will be used!\
+              Valid colors: purple, white, blue, yellow, orange, black, red, green, rainbow\
+              Locomotives are 'rainbow'.", "");
               console.log(chooseCard);
               if(chooseCard == null || chooseCard == ""){
                 alert("No card color chosen!");
