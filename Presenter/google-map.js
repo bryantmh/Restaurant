@@ -113,7 +113,7 @@ const googlemap = Vue.component('google-map', {
           item.path.addListener('click', function(){
             var cardColor = '';
             if(item.color == '#A0A0A0'){
-              var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + "cards\
+              var chooseCard = prompt("Please pick a card color to use! If you have less than " + item.length.toString() + " cards\
               then your locomotive cards will be used!\
               Valid colors: purple, white, blue, yellow, orange, black, red, green, rainbow\
               Locomotives are 'rainbow'.", "");
