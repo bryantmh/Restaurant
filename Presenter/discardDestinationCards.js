@@ -16,7 +16,7 @@ const destinationCard = Vue.component('destinationCard', {
     methods: {
         selectCard(card) {
             // if start game
-            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
+            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3 && data.newDestinationCards == null) {
 
                 if (this.selected.length == 0) {
                     this.selected.push(card['id']);
@@ -67,7 +67,7 @@ const destinationCard = Vue.component('destinationCard', {
 
         discardCards() {
             // if first round
-            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3) {
+            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3 && data.newDestinationCards == null) {
                 var messageData = JSON.stringify({'cardsToDiscard': this.selected});
                 var message = new Message('DiscardDestinationCardInitial', messageData, data.clientId, data.gameState.gameId).toString();
                 data.serverProxy.commandHandler(message);
