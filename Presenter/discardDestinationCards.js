@@ -15,8 +15,8 @@ const destinationCard = Vue.component('destinationCard', {
 
     methods: {
         selectCard(card) {
-            // if start game
-            if (data.gameState.players[data.clientId].cardBank.destinationCards.length == 3 && data.newDestinationCards == null) {
+            // if start game 
+            if ((data.gameState.players[data.clientId].cardBank.destinationCards.length == 3 && data.newDestinationCards == null) || data.newDestinationCards.length == 2) {
 
                 if (this.selected.length == 0) {
                     this.selected.push(card['id']);
@@ -29,6 +29,8 @@ const destinationCard = Vue.component('destinationCard', {
                     this.selected.push(card['id']);
                     $('#card' + card['id']).addClass('disableCard');
                 }
+                
+            } else if (data.newDestinationCards.length == 1){
                 
             }
             // not start game

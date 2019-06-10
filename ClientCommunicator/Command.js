@@ -173,20 +173,29 @@ class Command {
 		var cards = message.destinationCards;
 		var senderId = message.senderId;
 		data.newDestinationCards = [];
-
+		console.log('before');
+		console.log(data.gameState.cardBank.faceDownDestinationCards.length);
+		
 		if (playerId == senderId) {
 			for (var card in cards) {
-				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-				data.newDestinationCards.push(cards[card]);
+				if( cards[card] != null){
+					var cardIndex = data.gameState.cardBank.faceDownDestinationCards.indexOf(cards[card].id);
+					data.gameState.cardBank.faceDownDestinationCards.splice(cardIndex, 1);
+					data.newDestinationCards.push(cards[card]);
+				}
 			}
 			$('#discardGameBeginning').show();
 		}
 		else {
 			for (var card in cards) {
-				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-				data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
+				if( cards[card] != null){
+					var cardIndex = data.gameState.cardBank.faceDownDestinationCards.indexOf(cards[card].id);
+					data.gameState.cardBank.faceDownDestinationCards.splice(cardIndex, 1);
+					data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
+				}
 			}
-		}		
+		}
+		console.log(data.gameState.cardBank.faceDownDestinationCards.length);
 	}
 
 	PlayerLeftGame(message) {

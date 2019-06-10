@@ -105,7 +105,7 @@ const googlemap = Vue.component('google-map', {
           item.waypointmarker = wpmarker;
           item.path = path;
           item.path.setMap(map);
-          if(Object.keys(data.gameState.players).length < 4 && item.duplicate && item.duplicateid == index - 1) {
+          if(Object.keys(data.gameState.players).length < 4 && (item.duplicate && item.duplicateid == index - 1 || item.duplicate && item.duplicateid == index - 2)) {
             item.path.setMap(null);
           } else {
             item.waypointmarker.setMap(map);
@@ -1175,7 +1175,7 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
+                    duplicate: true,
                     duplicateid: null
                   },
                   {
@@ -1191,7 +1191,7 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
+                    duplicate: true,
                     duplicateid: null
                   },
                   {
@@ -1207,7 +1207,7 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
+                    duplicate: true,
                     duplicateid: null
                   },
                   {
@@ -1223,7 +1223,7 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
+                    duplicate: true,
                     duplicateid: null
                   },
                   {
