@@ -2,6 +2,8 @@ class Command {
 
 	execute(message) {
 		data.message = null;
+		// console.log(message.command)
+		// console.log(message.data)
 		var commandMessage = JSON.parse(message.data);
 		commandMessage.recipientId = message.recipientId;
 		commandMessage.senderId = message.senderId;
@@ -125,7 +127,6 @@ class Command {
 	}
 
 	EndGame(message) {
-		alert("The game is over!\n");
 		var pointBreakdown = message.pointBreakdown;
 
 		var endGameData = [];
@@ -139,8 +140,11 @@ class Command {
 			})
 		}
 
-		data.gameState.push(endGameData);
-		$('#viewEndGameModal').show();
+		alert("The game is over!\n" + endGameData[0].toString() + "\n" + endGameData[1].toString());
+
+		console.log(endGameData)
+		data.gameState.endGameData = endGameData;
+		$('#viewEndGameModal').show(); // fix endGame.html to show correct data
 	}
 
 	DrawTrainCardFromDeck(message) {

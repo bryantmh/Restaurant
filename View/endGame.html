@@ -8,14 +8,15 @@
         </button>
       </div>
       <div class="modal-body">
-       <div class="card" v-for="player in this.gameState.endGameData">
+        <p>Test</p>
+       <div class="card" v-for="player in this.gameState.endGameData"> <!--TODO: display data -->
         <div class="container">
           <h5>{{player.playerScreenName}}</h5> 
           <p>Points from Routes: {{player.routePoints}}</p> 
           <p>Points Earned from Completed Destination Cards: {{player.destinationCardPoints}}</p> 
           <p>Points Lost from Incompleted Destination Cards: {{player.destinationCardPointsLost}}</p> 
           <p>Most Routes Points: {{player.mostRoutesPoints}}</p> 
-          <p>TOTAL: <h4>{{getTotalPoints(player)}}</h4></p> 
+          <p>TOTAL: <h4></h4></p> 
         </div>
       </div>
     </div>
