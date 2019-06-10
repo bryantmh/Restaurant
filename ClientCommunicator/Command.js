@@ -164,9 +164,14 @@ class Command {
 		var playerId = message.playerId;
 
 		var faceUpIndex = message.faceUpIndex;
-		data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
-		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
-		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+
+		if (newCard != null) {
+			data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
+			var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
+			data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+		} else {
+			data.gameState.cardBank.faceUpTrainCards.splice(faceUpIndex, 1)
+		}
 
 		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
 	}
@@ -177,20 +182,29 @@ class Command {
 		var cards = message.destinationCards;
 		var senderId = message.senderId;
 		data.newDestinationCards = [];
-
+		console.log('before');
+		console.log(data.gameState.cardBank.faceDownDestinationCards.length);
+		
 		if (playerId == senderId) {
 			for (var card in cards) {
-				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-				data.newDestinationCards.push(cards[card]);
+				if( cards[card] != null){
+					var cardIndex = data.gameState.cardBank.faceDownDestinationCards.indexOf(cards[card].id);
+					data.gameState.cardBank.faceDownDestinationCards.splice(cardIndex, 1);
+					data.newDestinationCards.push(cards[card]);
+				}
 			}
 			$('#discardGameBeginning').show();
 		}
 		else {
 			for (var card in cards) {
-				data.gameState.cardBank.faceDownDestinationCards.splice(cards[card].id, 1);
-				data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
+				if( cards[card] != null){
+					var cardIndex = data.gameState.cardBank.faceDownDestinationCards.indexOf(cards[card].id);
+					data.gameState.cardBank.faceDownDestinationCards.splice(cardIndex, 1);
+					data.gameState.players[senderId].cardBank.destinationCards.push(cards[card]);
+				}
 			}
-		}		
+		}
+		console.log(data.gameState.cardBank.faceDownDestinationCards.length);
 	}
 
 	PlayerLeftGame(message) {
