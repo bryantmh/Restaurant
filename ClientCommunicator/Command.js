@@ -160,9 +160,14 @@ class Command {
 		var playerId = message.playerId;
 
 		var faceUpIndex = message.faceUpIndex;
-		data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
-		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
-		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+
+		if (newCard != null) {
+			data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
+			var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
+			data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+		} else {
+			data.gameState.cardBank.faceUpTrainCards.splice(faceUpIndex, 1)
+		}
 
 		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
 	}
