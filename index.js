@@ -29,7 +29,7 @@ const app = new Vue({
     mounted() {
         //ws://localhost:5001/
         //ws://jaredhammon.com:8080/ticket-to-ride-back-end/
-        this.serverProxy = new ServerProxy("ws://jaredhammon.com:8080/ticket-to-ride-back-end/");
+        this.serverProxy = new ServerProxy( "ws://jaredhammon.com:8080/ticket-to-ride-back-end/");
         this.serverProxy.socketRun();
     },
 });

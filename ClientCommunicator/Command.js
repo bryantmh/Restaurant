@@ -38,9 +38,9 @@ class Command {
 		});
 		for(var x = 0; x < discardedCards.length; x++){
 			for (var i = 0; i < data.gameState.players[ownerid].cardBank[cardColor + "Cards"].length; i++) {
-				if(data.gameState.players[ownerid].cardBank[cardColor + "Cards"][i].id == x.id){
+				if(data.gameState.players[ownerid].cardBank[cardColor + "Cards"][i].id == discardedCards[x].id){
 					data.gameState.players[ownerid].cardBank[cardColor + "Cards"].splice(i, 1);
-					continue;
+					break;
 				}
 			}
 		}
