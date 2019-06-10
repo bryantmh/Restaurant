@@ -77,6 +77,10 @@ class Command {
 		data.gameState = message.game;
 	}
 
+	GameHistory(message) {
+		alert(message);
+	}
+
 	StartGameSuccess (message) {
 		data.gameState = JSON.parse(message.gameState);
 	}

@@ -21,6 +21,11 @@ const playerlist = Vue.component('playerlist', {
                 }
             }
             return counter;
+        },
+
+        gameHistory() {
+            var message = new Message('GameHistory', null, this.clientId, this.gameState.gameId).toString();
+            this.serverProxy.commandHandler(message);
         }
     },
 
