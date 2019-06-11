@@ -1127,8 +1127,8 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
-                    duplicateid: null
+                    duplicate: true,
+                    duplicateid: 58
                   },
                   {
                     from: cities.SaintLouis,
@@ -1143,8 +1143,8 @@ const googlemap = Vue.component('google-map', {
                     waypointMarker: null,
                     path: null,
                     index: null,
-                    duplicate: null,
-                    duplicateid: null
+                    duplicate: true,
+                    duplicateid: 57
                   },
                   {
                     from: cities.Chicago,
@@ -1176,7 +1176,7 @@ const googlemap = Vue.component('google-map', {
                     path: null,
                     index: null,
                     duplicate: true,
-                    duplicateid: null
+                    duplicateid: 61
                   },
                   {
                     from: cities.Pittsburgh,
@@ -1192,7 +1192,7 @@ const googlemap = Vue.component('google-map', {
                     path: null,
                     index: null,
                     duplicate: true,
-                    duplicateid: null
+                    duplicateid: 60
                   },
                   {
                     from: cities.SaintLouis,
@@ -1208,7 +1208,7 @@ const googlemap = Vue.component('google-map', {
                     path: null,
                     index: null,
                     duplicate: true,
-                    duplicateid: null
+                    duplicateid: 63
                   },
                   {
                     from: cities.KansasCity,
@@ -1224,7 +1224,7 @@ const googlemap = Vue.component('google-map', {
                     path: null,
                     index: null,
                     duplicate: true,
-                    duplicateid: null
+                    duplicateid: 62
                   },
                   {
                     from: cities.SaintLouis,
