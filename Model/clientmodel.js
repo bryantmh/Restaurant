@@ -15,5 +15,6 @@ const data = {
     chat: [],
     inputName: null,
     newDestinationCards: null,
+    endGameData: null,
 };
 

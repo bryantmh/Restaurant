@@ -135,8 +135,17 @@ class Command {
 
 		var endGameData = [];
 		for (var player in pointBreakdown) {
+			var name;
+			for (var p in data.gameState.players) {
+				console.log(data.gameState.players[p].screenName);
+				if (p == player) {
+					name = data.gameState.players[p].screenName;
+					console.log("name=" + name)
+					break;
+				}
+			}
 			endGameData.push({
-				playerScreenName: player,
+				playerScreenName: name,
 				routePoints: pointBreakdown[player][0],
             	destinationCardPoints: pointBreakdown[player][1],
             	destinationCardPointsLost: pointBreakdown[player][2],
@@ -147,7 +156,7 @@ class Command {
 		alert("The game is over!\n" + endGameData[0].toString() + "\n" + endGameData[1].toString());
 
 		console.log(endGameData)
-		data.gameState.endGameData = endGameData;
+		data.endGameData = endGameData;
 		$('#viewEndGameModal').show(); // fix endGame.html to show correct data
 	}
 
