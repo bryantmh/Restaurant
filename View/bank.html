@@ -3,10 +3,15 @@
 	<!-- Displays if it is this player's turn -->
 	<span v-if="gameState.currentPlayer == gameState.players[clientId].playerId">
 
-		<div class="card cardCursor cardBankHigh" @click="drawDestinationCards()">
+		<div class="card cardCursor cardBankHigh" @click="drawDestinationCards()" v-if="Object.keys(gameState.cardBank.faceDownDestinationCards).length != 0">
 			<span>{{Object.keys(gameState.cardBank.faceDownDestinationCards).length}} Left</span>
 			<img class="card-img imgBankHigh" src="./View/img/destinationCard.jpg">
 		</div>
+		<div class="card cardCursor cardBankHigh" v-else="">
+			<span>{{Object.keys(gameState.cardBank.faceDownDestinationCards).length}} Left</span>
+			<img class="card-img imgBankHigh" src="./View/img/destinationCard.jpg">
+		</div>
+		
 
 		<div class="card cardCursor cardBank" v-for="(faceUpCard, index) in gameState.cardBank.faceUpTrainCards"
 			@click="drawTrainCardFromFaceup(index)">
