@@ -137,10 +137,8 @@ class Command {
 		for (var player in pointBreakdown) {
 			var name;
 			for (var p in data.gameState.players) {
-				console.log(data.gameState.players[p].screenName);
 				if (p == player) {
 					name = data.gameState.players[p].screenName;
-					console.log("name=" + name)
 					break;
 				}
 			}
@@ -152,10 +150,6 @@ class Command {
             	mostRoutesPoints: pointBreakdown[player][3]
 			})
 		}
-
-		alert("The game is over!\n" + endGameData[0].toString() + "\n" + endGameData[1].toString());
-
-		console.log(endGameData)
 		data.endGameData = endGameData;
 		$('#viewEndGameModal').show(); // fix endGame.html to show correct data
 	}
