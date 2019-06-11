@@ -31,6 +31,8 @@
 			var destinationCardHTML = <?php echo json_encode(file_get_contents("./View/discardDestinationCards.html"));?>;
 			var viewDestinationCardsHTML = <?php echo json_encode(file_get_contents("./View/viewDestinationCards.html"));?>;
 			var chatHTML = <?php echo json_encode(file_get_contents("./View/chat.html"));?>;
+			var endGameHTML = <?php echo json_encode(file_get_contents("./View/endGame.html"));?>;
+
 		</script>
 
 		<!-- Vue Packages -->
@@ -55,6 +57,7 @@
 		<script src="./Presenter/google-map.js"></script>
 		<script src="./Presenter/discardDestinationCards.js"></script>
 		<script src="./Presenter/chat.js"></script>
+		<script src="./Presenter/endGame.js"></script>
 		<script src="./index.js"></script>
 		
 	</body>

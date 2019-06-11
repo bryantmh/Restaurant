@@ -13,6 +13,10 @@ const endGame = Vue.component('endGame', {
     	hideModal() {
     		$('#viewEndGameModal').hide();
         },
+
+        displayModal() {
+    		$('#viewEndGameModal').show();
+        },
         
         getTotalPoints(player) {
             return player.routePoints + player.destinationCardPoints 

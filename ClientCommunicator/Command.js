@@ -2,6 +2,8 @@ class Command {
 
 	execute(message) {
 		data.message = null;
+		// console.log(message.command)
+		// console.log(message.data)
 		var commandMessage = JSON.parse(message.data);
 		commandMessage.recipientId = message.recipientId;
 		commandMessage.senderId = message.senderId;
@@ -75,6 +77,10 @@ class Command {
 		data.gameState = message.game;
 	}
 
+	GameHistory(message) {
+		alert(message);
+	}
+
 	StartGameSuccess (message) {
 		data.gameState = JSON.parse(message.gameState);
 	}
@@ -125,7 +131,6 @@ class Command {
 	}
 
 	EndGame(message) {
-		alert("The game is over!\n");
 		var pointBreakdown = message.pointBreakdown;
 
 		var endGameData = [];
@@ -139,8 +144,11 @@ class Command {
 			})
 		}
 
-		data.gameState.push(endGameData);
-		$('#viewEndGameModal').show();
+		alert("The game is over!\n" + endGameData[0].toString() + "\n" + endGameData[1].toString());
+
+		console.log(endGameData)
+		data.gameState.endGameData = endGameData;
+		$('#viewEndGameModal').show(); // fix endGame.html to show correct data
 	}
 
 	DrawTrainCardFromDeck(message) {
@@ -160,9 +168,14 @@ class Command {
 		var playerId = message.playerId;
 
 		var faceUpIndex = message.faceUpIndex;
-		data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
-		var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
-		data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+
+		if (newCard != null) {
+			data.gameState.cardBank.faceUpTrainCards[faceUpIndex] = newCard.id;
+			var faceDownIndex = data.gameState.cardBank.faceDownTrainCards.indexOf(newCard.id);
+			data.gameState.cardBank.faceDownTrainCards.splice(faceDownIndex, 1);
+		} else {
+			data.gameState.cardBank.faceUpTrainCards.splice(faceUpIndex, 1)
+		}
 
 		data.gameState.players[playerId].cardBank[oldCard.color + "Cards"].push(oldCard.id);
 	}

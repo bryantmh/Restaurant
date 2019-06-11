@@ -120,7 +120,7 @@ const googlemap = Vue.component('google-map', {
               if(chooseCard == null || chooseCard == ""){
                 alert("No card color chosen!");
                 return;
-              } else if (invalidColor(chooseCard)){
+              } else if (validColor(chooseCard) == false){
                 alert("Choose a valid color.");
                 return;
               } else {
