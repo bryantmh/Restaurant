@@ -15,13 +15,17 @@ class ServerProxy {
 		}
 		this.socket.onclose = (event) => {
 			console.log("Socket is closed. Reconnecting...");
-			setTimeout(function(e){
+			setTimeout(function(){
 				console.log('Attempting to reconnect...');
 				this.socket = new WebSocket('ws://jaredhammon.com:8080/ticket-to-ride-back-end/');
 				console.log('Reconnect successful!');
-				this.socket.socketRun();
-				this.socket.send("Reconnecting");
 			}, 5000);
+			if(this.socket.readyState == 1){
+				this.socketRun();
+				var messageData = JSON.stringify({'authToken': data.authToken});
+				var message = new Message('Reconnect', messageData, data.clientId, data.gameState.gameId).toString();
+				this.commandHandler(message);
+			}
 		}
 
 		this.socket.onerror = function(error){
