@@ -43,7 +43,7 @@ const home = Vue.component('home', {
                     var time = self.getTime(datetime, day);
 
                     //If you've made it this far, the day exists, now time to check the time
-                    self.checkTime(day, origDay, time, hour, minute, restaurant, datetime);
+                    self.checkTime(day, time, hour, minute, restaurant, datetime);
                 });
             });
             // this.openRestaurants = openRestaurants;
@@ -143,7 +143,7 @@ const home = Vue.component('home', {
             return time;
         },
 
-        checkTime(day, origDay, time, hour, minute, restaurant, datetime) {
+        checkTime(day, time, hour, minute, restaurant, datetime) {
             if (time != null) {
                 var startEnd = time.split('-');
                 var startTime = startEnd[0].trim();
@@ -172,6 +172,13 @@ const home = Vue.component('home', {
                 endHour = retTime['hour'];
                 endMinute = retTime['minutes'];
 
+                endHour = parseInt(endHour);
+                startHour = parseInt(startHour);
+                startMinute = parseInt(startMinute);
+                endMinute = parseInt(endMinute);
+                hour = parseInt(hour);
+                minute = parseInt(minute);
+
                 if (endHour < startHour) {
                     if ((startHour <= hour && hour <= 23) || hour == 0 && minute == 0) {
                         if (hour == startHour) {
@@ -189,15 +196,14 @@ const home = Vue.component('home', {
                         }
                     }
                     else {
-                        day += 1;
-                        if (day == 8) {
-                            day = 1;
+                        var tomorrowDay = day + 1
+                        if (tomorrowDay == 8) {
+                            tomorrowDay = 0;
                         }
-                        var tomorrow = new Date();
-                        tomorrow.setDate(origDay.getDate() + 1);
-                        time = this.getTime(datetime, tomorrow.getDay());
-                        console.log(time);
+                        time = this.getTime(datetime, tomorrowDay);
+        
                         if (time != null) {
+                            console.log(hour, startHour, endHour, restaurant)
                             if (hour <= endHour) {
                                 if (hour == endHour) {
                                     if (minute <= endMinute) {
