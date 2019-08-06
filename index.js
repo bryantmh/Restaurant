@@ -3,12 +3,7 @@
 //////////////////
 const router = new VueRouter({
     routes: [
-    { path: '/', component: login, name: 'login'},
-    { path: '/gamelist', component: gamelist, name: 'gamelist'},
-    { path: '/game', component: game, name: 'game'},
-    // { path: '/playerlist', component: playerlist, name: 'playerlist'},
-    // { path: '/destination-card', component: destinationCard, name: 'destinationCard'},
-    // { path: '/chat', component: chat, name: 'chat'},
+        {path: '/', component: home, name: 'home'},
     ]
 });
 
@@ -21,15 +16,9 @@ const app = new Vue({
     el: '#app',
 
     data() {
-        return data
+        return {};
     },
 
-    router,
+    router
     
-    mounted() {
-        //ws://localhost:5001/
-        //ws://jaredhammon.com:8080/ticket-to-ride-back-end/
-        this.serverProxy = new ServerProxy( "ws://jaredhammon.com:8080/ticket-to-ride-back-end/");
-        this.serverProxy.socketRun();
-    },
 });

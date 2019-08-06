@@ -1,0 +1,15 @@
+<div role="main">
+	<div class="page-content">
+		<div id="content">
+			<h1>Check For an Open Restaurant</h1><br><br>
+			<b-form @submit="onSubmit" id="form">
+				<label for="date">Enter a date:</label>
+				<b-form-input type="date" id="date" v-model="date"></b-form-input><br>
+				<label for="time">Enter a time:</label>
+				<b-form-input type="time" id="time" v-model="time"></b-form-input><br>
+				<b-button type="submit" variant="primary">Submit</b-button>
+			</b-form>
+			<b-table :items="openRestaurants"></b-table>
+	  	</div> 	
+	</div>
+</div>
